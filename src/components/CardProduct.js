@@ -3,21 +3,23 @@ import product from '../assets/product.png';
 
 const CardProduct = (props) => {
   return (
-    <div className="p-4 w-50 mx-3 lg:w-60 bg-white rounded-3xl carousel-item ">
+    <div className="p-4 w-52 lg:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200">
       <div className="flex-col w-full">
         <div>
           <img src={product} alt="" />
         </div>
         <p className="my-3 text-xl font-bold">{props.data.title}</p>
         <hr className="my-2" />
-        <div className="flex flex-col  w-full flex-wrap">
-          <div className="flex-row mb-2">
+        <div className="flex flex-row  w-full flex-wrap justify-between">
+          <div className="flex-col mb-2">
             <p className="text-sm  font-semibold">Open Bid</p>
-            <p className="text-sm md:text-base font-bold">{props.data.openBid}</p>
+            <p className="text-sm md:text-base font-bold">Rp{props.data.openBid}</p>
           </div>
-          <div className="flex-row">
+          <div className="flex-col">
             <p className="text-sm  font-semibold">Time Remaining</p>
-            <p className="text-sm md:text-base  font-bold">{props.data.timeRemaining}</p>
+            <p className="text-sm md:text-base font-bold text-red-700">
+              {props.data.timeRemaining}
+            </p>
           </div>
         </div>
       </div>

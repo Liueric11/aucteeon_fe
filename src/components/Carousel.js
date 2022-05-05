@@ -62,61 +62,6 @@ export default function Index() {
       title: 'judul',
       openBid: 10000,
       timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
     }
   ];
   return (
@@ -124,7 +69,7 @@ export default function Index() {
       <div className="flex items-center justify-center w-full h-full py-8 px-4">
         {/* Carousel for desktop and large size devices */}
         <CarouselProvider
-          className="lg:block hidden"
+          className="lg:block hidden w-full"
           naturalSlideWidth={100}
           isIntrinsicHeight={true}
           totalSlides={12}
@@ -132,7 +77,7 @@ export default function Index() {
           step={1}
           infinite={true}
         >
-          <div className="w-full relative flex items-center justify-center">
+          <div className="w-full relative flex items-center justify-center ">
             <ButtonBack
               role="button"
               aria-label="slide backward"
@@ -201,7 +146,7 @@ export default function Index() {
 
         {/* Carousel for tablet and medium size devices */}
         <CarouselProvider
-          className="lg:hidden md:block hidden"
+          className="lg:hidden md:block hidden w-full"
           naturalSlideWidth={100}
           isIntrinsicHeight={true}
           totalSlides={12}
