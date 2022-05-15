@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import _Navbar from './components/Navbar';
 import _homepage from './pages/homepage/homepage';
+import AddProductPage from './pages/homepage/AddProductPage';
 import Carousel from './components/Carousel';
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <div>
       {/* <_Navbar /> */}
       <div className="container mx-auto">
-        <_homepage />
+        {/* <_homepage /> */}
+        <AddProductPage />
       </div>
     </div>
   );
