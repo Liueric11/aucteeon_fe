@@ -15,7 +15,8 @@ function App() {
       <div className="container mx-auto">
         {/* <_homepage /> */}
         {/* <AddProductPage /> */}
-        <_registerPage />
+        {/* <_registerPage /> */}
+        <_loginPage />
       </div>
     </div>
   );
