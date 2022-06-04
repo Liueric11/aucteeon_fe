@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 import profileLogo from '../assets/dummy-profile.png';
 const Navbar = () => {
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+    <nav className="bg-dark absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <a href="#" className="py-1 block">
           <img className="scale-75" src={logo} alt="" />
