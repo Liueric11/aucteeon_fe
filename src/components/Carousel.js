@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import CardProduct from './CardProduct';
-import product from '../assets/product.png';
+// import product from '../assets/product.png';
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 

@@ -54,7 +54,7 @@ const registerPage = () => {
         </button>
         <div className="flex flex-col justify-center text-center">
           <p className="text-sm text-slate-400">Dengan mendaftar, Anda setuju dengan</p>
-          <a href="">
+          <a href="#logo">
             <p className="text-sm text-blue-600">Syarat & Ketentuan dan Kebijakan Privasi</p>
           </a>
         </div>

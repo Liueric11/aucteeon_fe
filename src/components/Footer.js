@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../assets/logo.png';
 
 const Footer = () => {
@@ -14,22 +14,22 @@ const Footer = () => {
 
         <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
           <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6 ">
+            <a href="#about" className="mr-4 hover:underline md:mr-6 ">
               About
             </a>
           </li>
           <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6">
+            <a href="#privacy" className="mr-4 hover:underline md:mr-6">
               Privacy Policy
             </a>
           </li>
           <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6 ">
+            <a href="#licensing" className="mr-4 hover:underline md:mr-6 ">
               Licensing
             </a>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <a href="#contact" className="hover:underline">
               Contact
             </a>
           </li>
