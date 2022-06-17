@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="p-4 bg-slate-200 shadow md:px-6 md:py-8 ">
+    <footer className="p-4 bg-slate-200 shadow md:px-6 md:py-8 min-w-[450px] mt-10">
       <div className="sm:flex sm:items-center sm:justify-between">
         <a href="https://flowbite.com" className="flex items-center mb-4 sm:mb-0">
           <img src={logo} alt="" />
