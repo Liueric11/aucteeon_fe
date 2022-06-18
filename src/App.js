@@ -4,6 +4,7 @@ import './App.css';
 import _Navbar from './components/Navbar';
 import _Footer from './components/Footer';
 import _homepage from './pages/home/homepage';
+import _detailPage from './pages/detail/DetailPage';
 import AddProductPage from './pages/addProduct/AddProductPage';
 import _registerPage from './pages/register/registerPage';
 import _loginPage from './pages/login/loginPage';
@@ -18,6 +19,7 @@ function App() {
         {/* <_Navbar /> */}
         <div className="container mx-auto">
           <Routes>
+            <Route path="/" element={<_loginPage />} />
             <Route path="/" element={<_homepage />} />
             <Route path="addProduct" element={<AddProductPage />} />
             <Route path="register" element={<_registerPage />} />

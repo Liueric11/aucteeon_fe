@@ -1,8 +1,17 @@
 import React from 'react';
 import logo from 'src/assets/logo.png';
 import google from 'src/assets/google-logo.png';
+import { ActionCreators } from 'src/store/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux/es/exports';
 
-const loginPage = () => {
+const loginPage = ({ increment, login, counter }) => {
+  const onLogin = () => {
+    login();
+  };
+
+  console.log(counter, 'counter bro');
+
   return (
     <div className="flex flex-col items-center">
       <img className="w-52 my-12" src={logo} alt="" />
@@ -49,4 +58,13 @@ const loginPage = () => {
   );
 };
 
-export default loginPage;
+const mapStateProps = ({ contoh, authReducer }) => {
+  return {
+    counter: contoh.counter,
+    user: authReducer.user
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ActionCreators, dispatch);
+};
+export default connect(mapStateProps, mapDispatchToProps)(loginPage);
