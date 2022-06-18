@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import addImage from 'src/assets/add-image.png';
 
 const AddProductPage = () => {
-  const [name, setName] = useState('');
-  const [cat, setCat] = useState('');
-  const [openPrice, setOpenPrice] = useState(0);
-  const [buyNowPrice, setBuyNowPrice] = useState(0);
-  const [multiplicationPrice, setMultiplicationPrice] = useState(0);
-  const [startBidTime, setStartBidTime] = useState('');
-  const [endBidTime, setEndBidTime] = useState(0);
+  const [, setName] = useState('');
+  const [, setCat] = useState('');
+  // const [openPrice, setOpenPrice] = useState(0);
+  // const [buyNowPrice, setBuyNowPrice] = useState(0);
+  // const [multiplicationPrice, setMultiplicationPrice] = useState(0);
+  const [, setStartBidTime] = useState('');
+  const [, setEndBidTime] = useState(0);
   return (
     <div>
       <p className="text-2xl md:text-3xl font-bold m-2 mb-10">Tambahkan Produk</p>

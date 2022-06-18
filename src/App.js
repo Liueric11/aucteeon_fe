@@ -1,33 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import _Navbar from './components/Navbar';
 import _Footer from './components/Footer';
-import _homepage from './pages/home/homepage';
 import _detailPage from './pages/detail/DetailPage';
+// import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Homepage from './pages/home/homepage';
 import AddProductPage from './pages/addProduct/AddProductPage';
-import _registerPage from './pages/register/registerPage';
-import _loginPage from './pages/login/loginPage';
-import Carousel from './components/Carousel';
-import _notFound from './pages/notFound';
+import RegisterPage from './pages/register/registerPage';
+import LoginPage from './pages/login/loginPage';
+import User from './pages/user/User';
+// import Carousel from './components/Carousel';
+import NotFound from './pages/notFound';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
       <div className=" h-screen flex justify-between flex-col">
-        {/* <_Navbar /> */}
+        {/* <Navbar /> */}
         <div className="container mx-auto">
           <Routes>
-            <Route path="/" element={<_loginPage />} />
-            <Route path="/" element={<_homepage />} />
-            <Route path="addProduct" element={<AddProductPage />} />
-            <Route path="register" element={<_registerPage />} />
-            <Route path="login" element={<_loginPage />} />
-            <Route path="*" element={<_notFound />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="add-product" element={<AddProductPage />} />
+            <Route path="user" element={<User />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
-        <_Footer />
+        <Footer />
 
         {/* <_homepage /> */}
         {/* <AddProductPage /> */}
