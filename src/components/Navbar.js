@@ -1,14 +1,16 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import cartIcon from '../assets/cart.png';
+import notifIcon from '../assets/bell.png';
 import profileLogo from '../assets/dummy-profile.png';
 const Navbar = () => {
   return (
-    <nav className="bg-dark absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="#logo" className="py-1 block">
-          <img className="scale-75" src={logo} alt="" />
-        </a>
-        <div className="flex bg" id="hamburger-mobile">
+    <nav className="bg-dark bg-slate-100 absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10">
+      <div className="flex flex-wrap justify-between items-center md:w-full md:mx-4">
+        <div className="flex" id="hamburger-mobile">
+          <a href="#logo" className="py-1 block">
+            <img className="scale-75" src={logo} alt="" />
+          </a>
           <button
             data-collapse-toggle="mobile-menu"
             type="button"
@@ -16,6 +18,7 @@ const Navbar = () => {
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
+            <span className="sr-only">Open main menu</span>
             <svg
               className="w-6 h-6"
               fill="currentColor"
@@ -46,21 +49,23 @@ const Navbar = () => {
           className="hidden justify-between items-center w-full md:flex md:w-auto md:mt-0.5"
           id="user-profile"
         >
-          <div className="px-3">
+          <div className="pr-6">
             <a
               href="#logo"
-              className="block py-2 pr-3 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+              className="block text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               aria-current="page"
             >
               Sell
             </a>
           </div>
-          <div className="px-3">
-            <a
-              href="#logo"
-              className="block py-2 pr-3 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >
-              Category
+          <div className="pr-3">
+            <a href="#myCart" className="block">
+              <img className="scale-75" src={cartIcon} alt="cartIcon" />
+            </a>
+          </div>
+          <div className="pr-3">
+            <a href="#notification" className="block">
+              <img className="scale-50" src={notifIcon} alt="notifIcon" />
             </a>
           </div>
           <button
@@ -71,7 +76,7 @@ const Navbar = () => {
             data-dropdown-toggle="dropdown"
           >
             <span className="sr-only">Open user menu</span>
-            <image className="w-8 h-8 rounded-full" src={profileLogo} alt="user photo" />
+            <image className="w-8 h-8 rounded-full" src={profileLogo} alt="userPhoto" />
           </button>
         </div>
       </div>
