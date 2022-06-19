@@ -4,6 +4,7 @@ import './App.css';
 // import _Footer from './components/Footer';
 // import _detailPage from './pages/detail/DetailPage';
 // import Navbar from './components/Navbar';
+import TransactionPage from './pages/transaction/transactionPage';
 import Footer from './components/Footer';
 import Homepage from './pages/home/homepage';
 import AddProductPage from './pages/addProduct/AddProductPage';
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Homepage />} />
+            <Route path="/transaction" element={<TransactionPage />} />
             <Route path="add-product" element={<AddProductPage />} />
             <Route path="user" element={<User />} />
             <Route path="register" element={<RegisterPage />} />

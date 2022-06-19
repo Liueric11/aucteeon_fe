@@ -6,44 +6,68 @@ import profileLogo from '../assets/dummy-profile.png';
 const Navbar = () => {
   return (
     <nav className="bg-dark bg-slate-100 absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10">
-      <div className="flex flex-wrap justify-between items-center md:w-full md:mx-4">
+      <div className="flex flex-wrap justify-between items-center w-full md:mx-4">
+        <a href="#logo" className="py-1 block">
+          <img className="scale-75" src={logo} alt="" />
+        </a>
         <div className="flex" id="hamburger-mobile">
-          <a href="#logo" className="py-1 block">
-            <img className="scale-75" src={logo} alt="" />
-          </a>
-          <button
-            data-collapse-toggle="mobile-menu"
-            type="button"
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
+          <div
+            className="md:hidden origin-top-right absolute right-4 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabIndex="-1"
           >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              className="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button>
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-0"
+              >
+                Sell
+              </a>
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-1"
+              >
+                My Cart
+              </a>
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-2"
+              >
+                Notification
+              </a>
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-2"
+              >
+                Profiles
+              </a>
+              <form method="POST" action="#" role="none">
+                <button
+                  type="submit"
+                  className="text-gray-700 block w-full text-left px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  id="menu-item-3"
+                >
+                  Sign out
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
         <div
           className="hidden justify-between items-center w-full md:flex md:w-auto md:mt-0.5"
@@ -76,7 +100,7 @@ const Navbar = () => {
             data-dropdown-toggle="dropdown"
           >
             <span className="sr-only">Open user menu</span>
-            <image className="w-8 h-8 rounded-full" src={profileLogo} alt="userPhoto" />
+            <img className="w-8 h-8 rounded-full" src={profileLogo} alt="userPhoto" />
           </button>
         </div>
       </div>
