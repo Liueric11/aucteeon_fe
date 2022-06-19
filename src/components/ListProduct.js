@@ -67,7 +67,7 @@ const ListProduct = () => {
 
   return (
     <div>
-      <div className=" flex flex-row flex-wrap bg-slate-100 items-center justify-center sm:px-6 sm:justify-around px-30 rounded-3xl">
+      <div className="flex flex-row flex-wrap bg-slate-100 sm:px-6 px-30 rounded-3xl justify-center">
         {data.map((data, index) => {
           return (
             index < 8 && (

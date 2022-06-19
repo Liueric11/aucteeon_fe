@@ -17,26 +17,23 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <div className=" h-screen flex justify-between flex-col">
-        {/* <Navbar /> */}
         <div className="container mx-auto">
           <ToastContainer />
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="add-product" element={<AddProductPage />} />
             <Route path="user" element={<User />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="**" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
-
         {/* <_homepage /> */}
         {/* <AddProductPage /> */}
         {/* <_registerPage /> */}
@@ -45,5 +42,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
