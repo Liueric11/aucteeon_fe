@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from 'src/assets/logo.png';
 import google from 'src/assets/google-logo.png';
+import { toast } from 'react-toastify';
+import { createNewUser } from 'src/api';
+import { useNavigate } from 'react-router-dom';
+const RegisterPage = () => {
+  const history = useNavigate();
+  const [input, setInput] = useState({
+    email: '',
+    password: '',
+    passwordConfirmation: ''
+  });
 
-const registerPage = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (input.password !== input.passwordConfirmation) {
+      toast('Password and password confirmation do not match');
+    }
+
+    const body = input;
+    await createNewUser({ history, body });
+  };
+
   return (
     <div className="flex flex-col items-center">
       <img className="w-52 my-12" src={logo} alt="" />
@@ -15,23 +34,29 @@ const registerPage = () => {
         <input
           type="email"
           placeholder="Masukkan Email Anda"
+          name="email"
+          onChange={(e) => setInput({ ...input, email: e.target.value })}
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid w-full"
         />
         <div className="my-4"></div>
         <input
           type="password"
+          name="password"
+          onChange={(e) => setInput({ ...input, password: e.target.value })}
           placeholder="Masukkan Password Anda"
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
         />
         <div className="my-4"></div>
         <input
           type="password"
+          name="passwordConfirmation"
+          onChange={(e) => setInput({ ...input, passwordConfirmation: e.target.value })}
           placeholder="Konfirmasi Password anda"
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
         />
 
         <button
-          type="submit"
+          onClick={handleSubmit}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full my-6"
         >
           Sign Up
@@ -63,4 +88,4 @@ const registerPage = () => {
   );
 };
 
-export default registerPage;
+export default RegisterPage;
