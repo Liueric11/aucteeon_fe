@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from 'src/assets/logo.png';
 import google from 'src/assets/google-logo.png';
 import { toast } from 'react-toastify';
@@ -9,8 +9,20 @@ const RegisterPage = () => {
   const [input, setInput] = useState({
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    firstname: '',
+    lastname: '',
+    phoneNumber: ''
   });
+
+  useEffect(() => {
+    const checkAuth = () => {
+      if (localStorage.getItem('token')) {
+        history('/');
+      }
+    };
+    checkAuth();
+  }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +43,30 @@ const RegisterPage = () => {
           <p className="text-slate-400">Already have Aucteeon Account? </p>
           <p className="text-sky-500 ml-2">Log In</p>
         </div>
+        <div className="my-4"></div>
+        <input
+          name="firstname"
+          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          placeholder="Masukkan Nama Depan"
+          className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
+        />
+        <div className="my-4"></div>
+        <input
+          name="lastname"
+          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          placeholder="Masukkan Nama Belakang"
+          className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
+        />
+        <div className="my-4"></div>
+        <div className="my-4"></div>
+        <input
+          type="number"
+          name="phoneNumber"
+          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          placeholder="Masukkan Nomor Telepon"
+          className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
+        />
+        <div className="my-4"></div>
         <input
           type="email"
           placeholder="Masukkan Email Anda"
