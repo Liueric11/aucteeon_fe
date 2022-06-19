@@ -3,7 +3,7 @@ import product from '../assets/product.png';
 
 const CardProduct = (props) => {
   return (
-    <div className="p-4 sm:w-52 lg:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full">
+    <div className="p-4 sm:w-52 lg:w-44 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full">
       <div className="flex-col w-full">
         <div>
           <img src={product} alt="" />
