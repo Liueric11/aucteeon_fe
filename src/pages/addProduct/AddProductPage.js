@@ -43,6 +43,10 @@ const AddProductPage = () => {
     setBaseImage(base64);
   };
 
+  const deleteImage = () => {
+    setBaseImage('');
+  };
+
   console.log('bodyyyy', body);
   return (
     <div>
@@ -52,22 +56,28 @@ const AddProductPage = () => {
         <p className="mb-2 text-lg font-medium">Foto Produk</p>
         <div className="flex flex-col ">
           <div>
-            <p className="">
-              Format gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal
-              gunakan ukuran minimum 700 x 700 px).
-            </p>
+            <p className="">Upload Gambar disini.</p>
           </div>
           <div className=" flex flex-row flex-wrap w-full">
             <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col p-10 m-3">
               <img className="w-96" src={baseImage} alt="" />
-              <input
-                type="file"
-                onChange={(e) => {
-                  uploadImage(e);
-                }}
-              />
-
-              <p className="text-center">Foto Utama</p>
+              {!baseImage ? (
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    uploadImage(e);
+                  }}
+                />
+              ) : (
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-6"
+                  onClick={() => {
+                    deleteImage();
+                  }}
+                >
+                  Hapus
+                </button>
+              )}
             </div>
             {/* <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col p-10 m-3">
               <img className="w-10" src={addImage} alt="" />
