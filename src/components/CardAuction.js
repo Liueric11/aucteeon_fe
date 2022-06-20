@@ -1,69 +1,69 @@
 import React, { useState } from 'react';
 
-const CardAuction = ({ onSubmitBid, openBid }) => {
+const CardAuction = ({ onSubmitBid, openBid, listBidding }) => {
   const [nominal, setNominal] = useState(null);
-  const data = [
-    {
-      id: 1,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 2,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 3,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 4,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 5,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 6,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 7,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 8,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 9,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 10,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 11,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    },
-    {
-      id: 12,
-      nama: 'Ricardo Milos',
-      bid: 400000
-    }
-  ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 2,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 3,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 4,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 5,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 6,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 7,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 8,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 9,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 10,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 11,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   },
+  //   {
+  //     id: 12,
+  //     nama: 'Ricardo Milos',
+  //     bid: 400000
+  //   }
+  // ];
 
   const multiplication = [
     {
@@ -97,11 +97,11 @@ const CardAuction = ({ onSubmitBid, openBid }) => {
       </div>
       <div className="h-2" />
       <div className="flex flex-col max-h-[300px] min-h-[300px] w-full border-2 border-slate-200 rounded-2xl px-1 py-2 overflow-y-auto">
-        {data.map((item, index) => {
+        {listBidding.map((item, index) => {
           return (
             <div className="flex flex-row justify-between items-center my-1" key={index}>
               <div className="flex flex-row items-center">
-                <p className="w-6">{item.id}.</p>
+                <p className="w-6">{index + 1}.</p>
                 <div className="w-2" />
                 <img
                   className="w-8 h-8 rounded-full object-cover"
@@ -109,9 +109,11 @@ const CardAuction = ({ onSubmitBid, openBid }) => {
                   alt="profile"
                 />
                 <div className="w-2" />
-                <p>Ricardo Milos</p>
+                <p>
+                  {item.user_detail.firstname} {item.user_detail.lastname}
+                </p>
               </div>
-              <p>{`Rp ${item.bid.toLocaleString().replace(/,/g, '.')}`}</p>
+              <p>{`Rp ${item.bidValue.toLocaleString().replace(/,/g, '.')}`}</p>
             </div>
           );
         })}

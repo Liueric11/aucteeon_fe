@@ -42,6 +42,7 @@ const DetailPage = () => {
         console.log('res success', res);
         if (res && Array.isArray(res.list)) {
           setHighestBid(res.highestBid.bidValue);
+          setListBidding(res.list);
         }
       });
 
@@ -63,12 +64,8 @@ const DetailPage = () => {
     if (socket) {
       socket.on('auction-bid-success', (res) => {
         console.log('res bid success', res);
-        // setListBidding([res.bid, ...listBidding]);
-        // setHighestBid(+res.bid.bid);
-        // if (res.bid.userId == user.userId) {
-        //   setUserLastBid(+res.bid.bid);
-        // }
-        // showPopup('Berhasil', 'success');
+        setListBidding(res.list);
+        setHighestBid(res.highestBid);
       });
 
       socket.on('auction-bid-failed', (res) => {
@@ -78,7 +75,7 @@ const DetailPage = () => {
   }, [socket, listBidding]);
 
   const onSubmitAuctionBid = (val) => {
-    const bidValue = parseInt(val);
+    const bidValue = highestBid + parseInt(val);
 
     const args = {
       userId: user.id,
@@ -120,6 +117,7 @@ const DetailPage = () => {
             <CardAuction
               onSubmitBid={(val) => onSubmitAuctionBid(val)}
               openBid={product.initValue}
+              listBidding={listBidding}
             />
           )}
         </div>
