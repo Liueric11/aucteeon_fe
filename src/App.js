@@ -16,6 +16,7 @@ import NotFound from './pages/notFound';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TransactionDetailPage from './pages/transaction/transactionDetailPage';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />
+            <Route path="/transaction-detail" element={<TransactionDetailPage />} />
             <Route path="add-product" element={<AddProductPage />} />
             <Route path="detail-product" element={<DetailPage />} />
             <Route path="user" element={<User />} />
