@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import createNewProduct from 'src/api/product/createNewProduct';
-import getListCategory from 'src/api/product/getListCategory';
 import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
 // import addImage from 'src/assets/add-image.png';
 
 const AddProductPage = () => {
   // const history = useNavigate();
   const { listCategory } = useFetchGetCategory();
-  console.log('liust', listCategory);
   const [input, setInput] = useState({
     name: '',
     condition: '',
@@ -53,10 +51,6 @@ const AddProductPage = () => {
         reject(error);
       };
     });
-  };
-  useEffect = () => {
-    getListCategory();
-    // setListCategory();
   };
 
   const uploadImage = async (e) => {

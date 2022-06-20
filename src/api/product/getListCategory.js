@@ -5,7 +5,6 @@ async function getListCategory(cb) {
   await axiosInstance
     .get('/v1/category')
     .then((res) => {
-      console.log('resss', res);
       cb(res.data.data.rows, null);
     })
     .catch((err) => {
