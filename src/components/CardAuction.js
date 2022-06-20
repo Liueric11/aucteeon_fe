@@ -2,69 +2,6 @@ import React, { useState } from 'react';
 
 const CardAuction = ({ onSubmitBid, openBid, listBidding }) => {
   const [nominal, setNominal] = useState(null);
-  // const data = [
-  //   {
-  //     id: 1,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 2,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 3,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 4,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 5,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 6,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 7,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 8,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 9,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 10,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 11,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   },
-  //   {
-  //     id: 12,
-  //     nama: 'Ricardo Milos',
-  //     bid: 400000
-  //   }
-  // ];
-
   const multiplication = [
     {
       id: 1,
@@ -141,7 +78,10 @@ const CardAuction = ({ onSubmitBid, openBid, listBidding }) => {
       </div>
       <button
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
-        onClick={() => onSubmitBid(nominal.nominal)}
+        onClick={() => {
+          setNominal(null);
+          onSubmitBid(nominal.nominal);
+        }}
       >
         Bid Now
       </button>

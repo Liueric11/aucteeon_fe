@@ -48,6 +48,7 @@ const DetailPage = () => {
 
       socket.on('auction-join-failed', (res) => {
         console.log('res failed', res);
+        toast('Failed Join Auction');
       });
 
       const args = {
@@ -66,13 +67,15 @@ const DetailPage = () => {
         console.log('res bid success', res);
         setListBidding(res.list);
         setHighestBid(res.highestBid);
+        // toast('Success Bid');
       });
 
       socket.on('auction-bid-failed', (res) => {
         console.log('res bid failed', res);
+        // toast('Failed Bid');
       });
     }
-  }, [socket, listBidding]);
+  }, [socket]);
 
   const onSubmitAuctionBid = (val) => {
     const bidValue = highestBid + parseInt(val);
