@@ -37,7 +37,7 @@ const TransactionDetailPage = () => {
   return (
     <div className="flex justify-center">
       <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm md:w-3/4 w-11/12">
-        <div className="mt-2 px-8">
+        <div className="mt-4 px-8">
           <p className="font-semibold text-3xl">Order Details</p>
         </div>
         <div className="flex flex-row flex-wrap md:items-start md:justify-start items-center justify-center md:ml-8 my-4 gap-8">
