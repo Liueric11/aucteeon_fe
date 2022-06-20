@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import createNewProduct from 'src/api/product/createNewProduct';
-import getListCategory from 'src/api/product/getListCategory';
 import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
 // import addImage from 'src/assets/add-image.png';
 
 const AddProductPage = () => {
-  // const history = useNavigate();
+  const history = useNavigate();
   const { listCategory } = useFetchGetCategory();
-  console.log('liust', listCategory);
+  // const [baseImage, setBaseImage] = useState('');
+
   const [input, setInput] = useState({
     name: '',
     condition: '',
     initValue: '',
     categoryId: '',
-    // buyNowValue: 0,
+    buyNowValue: 0,
     // multiplicationPrice: 0,
+    images: [],
     dateStarted: '',
     dateEnd: ''
   });
+  console.log('listtttkaka', input.images);
 
   // useEffect(() => {
   //   const checkAuth = () => {
@@ -38,8 +40,6 @@ const AddProductPage = () => {
   // const [startBidTime, setStartBidTime] = useState('');
   // const [endBidTime, setEndBidTime] = useState(0);
 
-  const [baseImage, setBaseImage] = useState('');
-
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -54,10 +54,6 @@ const AddProductPage = () => {
       };
     });
   };
-  useEffect = () => {
-    getListCategory();
-    // setListCategory();
-  };
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -65,11 +61,11 @@ const AddProductPage = () => {
     if (file.size > 1048576) {
       alert('File Terlalu besar');
     }
-    setBaseImage(base64);
+    setInput({ ...input, images: [base64] });
   };
 
   const deleteImage = () => {
-    setBaseImage('');
+    setInput({ ...input, images: [''] });
   };
 
   const deleteCharacter = (e) => {
@@ -88,7 +84,7 @@ const AddProductPage = () => {
     body.dateEnd = deleteCharacter(input.dateEnd);
 
     console.log('kaaaaa', body);
-    // await createNewProduct({ body, history });
+    await createNewProduct({ body, history });
   };
   // console.log('bodyyyy', body);
   return (
@@ -103,8 +99,8 @@ const AddProductPage = () => {
           </div>
           <div className=" flex flex-row flex-wrap w-full">
             <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col p-10 m-3">
-              <img className="w-96" src={baseImage} alt="" />
-              {!baseImage ? (
+              <img className="w-96" src={input.images[0]} alt="" />
+              {!input.images[0] ? (
                 <input
                   type="file"
                   onChange={(e) => {
@@ -169,8 +165,13 @@ const AddProductPage = () => {
           <option selected>
             <p className="text-slate-300">Pilih Kategori</p>
           </option>
-          <option value="new">Baru</option>
-          <option value="secondhand">Bekas</option>
+          {listCategory.map((item, index) => {
+            return (
+              <option key={index} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
         </select>
         <p className="mb-2 text-lg font-medium">Kondisi</p>
         <select

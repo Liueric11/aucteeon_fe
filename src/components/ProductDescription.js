@@ -1,24 +1,88 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
-const ProductDescription = () => {
+const ProductDescription = ({ data, highestBid }) => {
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [minutesLeft, setMinutesLeft] = useState(0);
+  const [hoursLeft, setHourssLeft] = useState(0);
+  const [daysLeft, setDaysLeft] = useState(0);
+  const [weeksLeft, setWeeksLeft] = useState(0);
+  const [monthsLeft, setMonthsLeft] = useState(0);
+  const [yearsLeft, setYearsLeft] = useState(0);
+  //
+  const [isWillCome, setIsWillCome] = useState(false);
+  const [isOnGoing, setIsOnGoing] = useState(false);
+  const [isPassed, setIsPassed] = useState(false);
+
+  useEffect(() => {
+    const interval = data
+      ? setInterval(() => {
+          const now = moment();
+          const _isWillCome = moment(data.dateStarted.slice(0, -1)).isAfter(now);
+          const _isOnGoing = moment(data.dateEnd.slice(0, -1)).isAfter(now);
+          const _isPassed = moment(data.dateEnd.slice(0, -1)).isBefore(now);
+          setIsWillCome(_isWillCome);
+          setIsOnGoing(!_isWillCome && _isOnGoing);
+          setIsPassed(_isPassed);
+          const issueDate = _isWillCome
+            ? moment(data.dateStarted.slice(0, -1))
+            : moment(data.dateEnd.slice(0, -1));
+          const tl = issueDate.diff(now, 'seconds');
+          const minl = issueDate.diff(now, 'minutes');
+          const hl = issueDate.diff(now, 'hours');
+          const dl = issueDate.diff(now, 'days');
+          const wl = issueDate.diff(now, 'weeks');
+          const ml = issueDate.diff(now, 'months');
+          const yl = issueDate.diff(now, 'years');
+          setTimeLeft(tl > 0 ? tl : 0);
+          setMinutesLeft(minl > 0 ? minl : 0);
+          setHourssLeft(hl > 0 ? hl : 0);
+          setDaysLeft(dl > 0 ? dl : 0);
+          setWeeksLeft(wl > 0 ? wl : 0);
+          setMonthsLeft(ml > 0 ? ml : 0);
+          setYearsLeft(yl > 0 ? yl : 0);
+        }, 1000)
+      : null;
+
+    return () => clearInterval(interval);
+  }, [data]);
+
   return (
-    <div className="flex flex-col">
-      <p className="font-bold text-xl">Jeans Spring</p>
+    <div className="flex flex-col min-w-[350px] md:min-w-[500px] lg:min-w-[380px]">
+      <p className="font-bold text-xl">{data.name}</p>
       <div className="h-4" />
       <div className="flex flex-row justify-between">
         <div className="flex flex-col">
           <p className="font-bold">Current Bid</p>
-          <p className="font-bold">Rp 400.000</p>
+          <p className="font-bold">{`Rp ${highestBid.toLocaleString().replace(/,/g, '.')}`}</p>
         </div>
         <div className="flex flex-col">
           <p className="font-bold">Time Remaining</p>
-          <p className="font-bold">01:20:30</p>
+          <p className="font-bold">
+            {yearsLeft > 0
+              ? `${yearsLeft} Tahun lagi`
+              : monthsLeft > 0
+              ? monthsLeft + ' Bulan lagi'
+              : weeksLeft > 0
+              ? weeksLeft + ' Minggu lagi'
+              : daysLeft > 0
+              ? daysLeft + ' Hari lagi'
+              : hoursLeft > 0
+              ? moment.duration(timeLeft, 'seconds').format('HH:mm:ss', { trim: false })
+              : minutesLeft > 0
+              ? moment.duration(timeLeft, 'seconds').format('mm:ss', { trim: false })
+              : timeLeft > 0
+              ? moment.duration(timeLeft, 'seconds').format('ss', { trim: false })
+              : isPassed
+              ? 'Waktu habis'
+              : '-'}
+          </p>
         </div>
       </div>
       <div className="h-px bg-slate-900 my-2" />
       <div className="flex flex-col">
         <p className="font-normal" style={{ color: '#5A5B6A' }}>
-          Condition : <span style={{ color: '#333333' }}>NEW</span>
+          Condition : <span style={{ color: '#333333' }}>{data.condition}</span>
         </p>
         <p className="font-normal" style={{ color: '#5A5B6A' }}>
           Category :{' '}
@@ -27,18 +91,7 @@ const ProductDescription = () => {
           </span>
         </p>
         <div className="h-4" />
-        <p className="font-normal">
-          Si osculantur puer tuus aut uxorem tuam, osculum, non dico quod omnia quae sunt hominis,
-          et sic non tangetur, si aut ex eis moriatur.
-          <br />
-          <br />
-          Quando ambulabat agendis admonere te qualis actio. Si ad corpus, quae plerumque Imaginare
-          tecum in balineo quidam aquam fundes aliquod discrimen vituperiis usum alii furantur.
-          <br />
-          <br />
-          Sic de isto et tutius perducit ad actum ipsum, ut si dico “Ego autem vadam lavari, ut mens
-          mea in statu naturae conformior.” Et similiter circa alias res.
-        </p>
+        <p className="font-normal">{data.desc}</p>
       </div>
       <div className="h-px bg-slate-900 my-2" />
     </div>

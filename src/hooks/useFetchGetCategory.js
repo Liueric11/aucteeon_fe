@@ -15,7 +15,6 @@ export default function useFetchGetCategory() {
           localStorage.removeItem('user');
           history('/login');
         }
-        console.log('dataaaa', data);
         setListCategory([...data]);
       });
     }
