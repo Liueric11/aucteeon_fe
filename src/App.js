@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 // import _Navbar from './components/Navbar';
 // import _Footer from './components/Footer';
-// import _detailPage from './pages/detail/DetailPage';
+import DetailPage from './pages/detail/DetailPage';
 // import Navbar from './components/Navbar';
 import TransactionPage from './pages/transaction/transactionPage';
 import Footer from './components/Footer';
@@ -27,6 +27,7 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="add-product" element={<AddProductPage />} />
+            <Route path="detail-product" element={<DetailPage />} />
             <Route path="user" element={<User />} />
             <Route path="register" element={<RegisterPage />} />
             <Route path="login" element={<LoginPage />} />

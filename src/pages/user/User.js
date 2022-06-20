@@ -3,12 +3,12 @@ import TempProfile from '../../assets/image 26.png';
 
 const User = () => {
   return (
-    <>
-      <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm">
-        <div className="border-solid border-b-2 border-slate-200 mt-2 pl-2">
+    <div className="flex justify-center">
+      <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm max-w-[700px]">
+        <div className="border-solid border-b-2 border-slate-200 mt-2 pl-2 px-8">
           <p>Biodata</p>
         </div>
-        <div className="flex justify-center md:flex-row flex-col">
+        <div className="flex justify-between md:flex-row flex-col px-8">
           <div className="flex justify-center">
             <div className="flex border-solid border-2 border-slate-200 mt-10 mr-3 rounded-b-lg w-fit md:mb-10">
               <div>
@@ -42,7 +42,7 @@ const User = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
