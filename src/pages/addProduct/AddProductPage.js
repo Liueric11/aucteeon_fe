@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
-import addImage from 'src/assets/add-image.png';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import createNewProduct from 'src/api/product/createNewProduct';
+import getListCategory from 'src/api/product/getListCategory';
+import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
+// import addImage from 'src/assets/add-image.png';
 
 const AddProductPage = () => {
-  const [name, setName] = useState('');
-  const [cat, setCat] = useState('');
-  const [openPrice, setOpenPrice] = useState(0);
-  const [buyNowPrice, setBuyNowPrice] = useState(0);
-  const [multiplicationPrice, setMultiplicationPrice] = useState(0);
-  const [startBidTime, setStartBidTime] = useState('');
-  const [endBidTime, setEndBidTime] = useState(0);
+  // const history = useNavigate();
+  const { listCategory } = useFetchGetCategory();
+  console.log('liust', listCategory);
+  const [input, setInput] = useState({
+    name: '',
+    condition: '',
+    initValue: '',
+    categoryId: '',
+    // buyNowValue: 0,
+    // multiplicationPrice: 0,
+    dateStarted: '',
+    dateEnd: ''
+  });
 
-  const body = {
-    name: name,
-    cat: cat,
-    openPrice: openPrice,
-    buyNowPrice: buyNowPrice,
-    multiplicationPrice: multiplicationPrice,
-    startBidTime: startBidTime,
-    endBidTime: endBidTime
-  };
+  // useEffect(() => {
+  //   const checkAuth = () => {
+  //     if (localStorage.getItem('token')) {
+  //       history('/');
+  //     }
+  //   };
+  //   checkAuth();
+  // }, [history]);
+
+  // const [name, setName] = useState('');
+  // const [cat, setCat] = useState('');
+  // const [openPrice, setOpenPrice] = useState(0);
+  // const [buyNowPrice, setBuyNowPrice] = useState(0);
+  // const [multiplicationPrice, setMultiplicationPrice] = useState(0);
+  // const [startBidTime, setStartBidTime] = useState('');
+  // const [endBidTime, setEndBidTime] = useState(0);
 
   const [baseImage, setBaseImage] = useState('');
 
@@ -36,10 +54,17 @@ const AddProductPage = () => {
       };
     });
   };
+  useEffect = () => {
+    getListCategory();
+    // setListCategory();
+  };
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
+    if (file.size > 1048576) {
+      alert('File Terlalu besar');
+    }
     setBaseImage(base64);
   };
 
@@ -47,13 +72,31 @@ const AddProductPage = () => {
     setBaseImage('');
   };
 
-  console.log('bodyyyy', body);
+  const deleteCharacter = (e) => {
+    var mystring = e.split('T').join(' ');
+    // console.log('mystinggg', mystring);
+    return mystring;
+    // setStartBidTime(mystring);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
+    // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
+    const body = input;
+    body.dateStarted = deleteCharacter(input.dateStarted);
+    body.dateEnd = deleteCharacter(input.dateEnd);
+
+    console.log('kaaaaa', body);
+    // await createNewProduct({ body, history });
+  };
+  // console.log('bodyyyy', body);
   return (
     <div>
-      <p className="text-2xl md:text-3xl font-bold m-2 mb-10">Tambahkan Produk</p>
+      <p className="text-2xl md:text-3xl font-bold m-2 mb-10">Add Product</p>
       <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">
-        <p className="mb-8 md:text-2xl text-xl font-semibold">Unggah Produk</p>
-        <p className="mb-2 text-lg font-medium">Foto Produk</p>
+        <p className="mb-8 md:text-2xl text-xl font-semibold">Upload Product</p>
+        <p className="mb-2 text-lg font-medium">Product Photo</p>
         <div className="flex flex-col ">
           <div>
             <p className="">Upload Gambar disini.</p>
@@ -112,7 +155,7 @@ const AddProductPage = () => {
           className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
           placeholder="Contoh: Sepatu Pria (Jenis/Kategori Produk) + Merek + Keterangan"
           required
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setInput({ ...input, name: e.target.value })}
         />
         <p className="mb-2 text-lg font-medium">Kategori</p>
         <select
@@ -120,15 +163,29 @@ const AddProductPage = () => {
           border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
           aria-label="Default select example"
           onChange={(e) => {
-            setCat(e.target.value);
+            setInput({ ...input, categoryId: e.target.value });
           }}
         >
           <option selected>
             <p className="text-slate-300">Pilih Kategori</p>
           </option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="new">Baru</option>
+          <option value="secondhand">Bekas</option>
+        </select>
+        <p className="mb-2 text-lg font-medium">Kondisi</p>
+        <select
+          className="form-select appearance-none
+          border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
+          aria-label="Default select example"
+          onChange={(e) => {
+            setInput({ ...input, condition: e.target.value });
+          }}
+        >
+          <option selected>
+            <p className="text-slate-300">Pilih Kondisi</p>
+          </option>
+          <option value="new">Baru</option>
+          <option value="secondhand">Bekas</option>
         </select>
       </div>
       <div className="my-8"></div>
@@ -140,15 +197,15 @@ const AddProductPage = () => {
           <p className="mr-2">Rp</p>
           <input
             type="number"
-            id="openPrice"
+            id="initValue"
             className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-2"
             placeholder="10000"
             required
-            onChange={(e) => setOpenPrice(e.target.value)}
+            onChange={(e) => setInput({ ...input, initValue: e.target.value })}
           />
         </div>
         <div className="my-3" />
-        <p className="text-lg font-medium">Buy It Now Price</p>
+        {/* <p className="text-lg font-medium">Buy It Now Price</p>
         <div className="flex flex-row items-center">
           <p className="mr-2">Rp</p>
           <input
@@ -157,10 +214,10 @@ const AddProductPage = () => {
             className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-2"
             placeholder="10000"
             required
-            onChange={(e) => setBuyNowPrice(e.target.value)}
+            onChange={(e) => setInput({ ...input, buyNowPrice: e.target.value })}
           />
-        </div>
-        <div className="my-3" />
+        </div> */}
+        {/* <div className="my-3" />
         <p className="text-lg font-medium">Multiplication Price</p>
         <div className="flex flex-row items-center">
           <p className="mr-2">Rp</p>
@@ -170,9 +227,9 @@ const AddProductPage = () => {
             className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-2"
             placeholder="10000"
             required
-            onChange={(e) => setMultiplicationPrice(e.target.value)}
+            onChange={(e) => setInput({ ...input, multiplicationPrice: e.target.value })}
           />
-        </div>
+        </div> */}
         <div className="my-3" />
         <p className="text-lg font-medium">Start Bid Time</p>
         <input
@@ -181,7 +238,7 @@ const AddProductPage = () => {
           type="datetime-local"
           id="meeting-time"
           name="meeting-time"
-          onChange={(e) => setStartBidTime(e.target.value)}
+          onChange={(e) => setInput({ ...input, dateStarted: e.target.value })}
         />
 
         <div className="my-3" />
@@ -192,13 +249,14 @@ const AddProductPage = () => {
           type="datetime-local"
           id="meeting-time"
           name="meeting-time"
-          onChange={(e) => setEndBidTime(e.target.value)}
+          onChange={(e) => setInput({ ...input, dateEnd: e.target.value })}
         />
       </div>
       <div className="my-4" />
       <button
         type="submit"
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full my-6"
+        onClick={handleSubmit}
       >
         Save
       </button>

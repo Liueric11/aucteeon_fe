@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
-import { getUser } from '../api';
+// import { getUser } from '../api';
 import { useNavigate } from 'react-router-dom';
+import getListCategory from 'src/api/product/getListCategory';
 
-export default function useFetchGetUser() {
-  const [user, setUser] = useState({});
+export default function useFetchGetCategory() {
+  const [listCategory, setListCategory] = useState([]);
   const history = useNavigate();
   useEffect(() => {
     let isApiSubscribed = true;
-    if (Object.keys(user) && isApiSubscribed) {
-      getUser((user, err) => {
+    if (listCategory.length === 0 && isApiSubscribed) {
+      getListCategory((data, err) => {
         if (err) {
           localStorage.removeItem('token');
           localStorage.removeItem('user');
           history('/login');
         }
-        setUser({ ...user });
+        console.log('dataaaa', data);
+        setListCategory([...data]);
       });
     }
 
@@ -24,5 +26,5 @@ export default function useFetchGetUser() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
-  return { user, setUser };
+  return { listCategory };
 }
