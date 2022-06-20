@@ -8,6 +8,7 @@ import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
 const AddProductPage = () => {
   // const history = useNavigate();
   const { listCategory } = useFetchGetCategory();
+  console.log('listttt', listCategory);
   const [input, setInput] = useState({
     name: '',
     condition: '',
@@ -163,8 +164,13 @@ const AddProductPage = () => {
           <option selected>
             <p className="text-slate-300">Pilih Kategori</p>
           </option>
-          <option value="new">Baru</option>
-          <option value="secondhand">Bekas</option>
+          {listCategory.map((item, index) => {
+            return (
+              <option key={index} value={item.id}>
+                {item.name}
+              </option>
+            );
+          })}
         </select>
         <p className="mb-2 text-lg font-medium">Kondisi</p>
         <select
