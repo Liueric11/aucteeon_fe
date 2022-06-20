@@ -20,7 +20,7 @@ function Authentication() {
     (error) => {
       if (error.response.status === 401) {
         localStorage.removeItem('token');
-        this.localStorage.removeItem('user');
+        localStorage.removeItem('user');
       }
       return Promise.reject(error);
     }
