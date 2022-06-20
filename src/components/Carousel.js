@@ -2,11 +2,13 @@ import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import CardProduct from './CardProduct';
+import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
 // import product from '../assets/product.png';
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function Index() {
+  const { listProduct } = useFetchGetProduct();
   const data = [
     {
       title: 'judul',
@@ -65,7 +67,7 @@ export default function Index() {
     }
   ];
   return (
-    <div className="container mx-auto bg-slate-100 rounded-3xl">
+    <div className="container mx-auto bg-slate-100 rounded-3xl mt-20">
       <div className="flex items-center justify-center w-full h-full py-8 px-4">
         {/* Carousel for desktop and large size devices */}
         <CarouselProvider
@@ -106,11 +108,11 @@ export default function Index() {
                   id="slider"
                   className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                 >
-                  {data.map((data, index) => {
+                  {listProduct.map((data, index) => {
                     console.log(data);
                     return (
                       <Slide index={index} key={data}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
                       </Slide>
@@ -183,10 +185,10 @@ export default function Index() {
                   id="slider"
                   className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                 >
-                  {data.map((data, index) => {
+                  {listProduct.map((data, index) => {
                     return (
                       <Slide index={index} key={data}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
                       </Slide>
@@ -259,10 +261,10 @@ export default function Index() {
                   id="slider"
                   className="h-full w-full flex lg:gap-8 md:gap-6 items-center justify-start transition ease-out duration-700"
                 >
-                  {data.map((data, index) => {
+                  {listProduct.map((data, index) => {
                     return (
                       <Slide key={data} index={index}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
                       </Slide>

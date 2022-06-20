@@ -5,7 +5,7 @@ import notifIcon from '../assets/bell.png';
 import profileLogo from '../assets/dummy-profile.png';
 const Navbar = () => {
   return (
-    <nav className="bg-dark bg-slate-100 absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10">
+    <nav className="bg-dark bg-slate-100 absolute border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-10 ">
       <div className="flex flex-wrap justify-between items-center w-full md:mx-4">
         <a href="#logo" className="py-1 block">
           <img className="scale-75" src={logo} alt="" />

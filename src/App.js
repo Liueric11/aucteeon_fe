@@ -17,6 +17,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import TransactionDetailPage from './pages/transaction/transactionDetailPage';
+import Navbar from './components/Navbar';
 
 export default function App() {
   return (
@@ -24,6 +25,8 @@ export default function App() {
       <div className=" h-screen flex justify-between flex-col">
         <div className="container mx-auto">
           <ToastContainer />
+          <Navbar />
+
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />
@@ -36,7 +39,9 @@ export default function App() {
             <Route path="**" element={<NotFound />} />
           </Routes>
         </div>
+
         <Footer />
+
         {/* <_homepage /> */}
         {/* <AddProductPage /> */}
         {/* <_registerPage /> */}
