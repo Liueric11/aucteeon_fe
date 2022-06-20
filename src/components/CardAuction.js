@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const CardAuction = () => {
+const CardAuction = ({ onSubmitBid, openBid }) => {
+  const [nominal, setNominal] = useState(null);
   const data = [
     {
       id: 1,
@@ -67,23 +68,23 @@ const CardAuction = () => {
   const multiplication = [
     {
       id: 1,
-      nominal: 1000
-    },
-    {
-      id: 2,
       nominal: 10000
     },
     {
+      id: 2,
+      nominal: 25000
+    },
+    {
       id: 3,
-      nominal: 100000
+      nominal: 50000
     },
     {
       id: 4,
-      nominal: 2500000
+      nominal: 100000
     },
     {
       id: 5,
-      nominal: 5000000
+      nominal: 200000
     }
   ];
 
@@ -91,7 +92,7 @@ const CardAuction = () => {
     <div className="flex flex-col items-start justify-center border-2 border-slate-200 rounded-2xl px-2 py-4">
       <div className="flex flex-row items-center justify-between w-full">
         <div className="flex flex-col">
-          <p className="">Open Bid : Rp 50.000</p>
+          <p className="">Open Bid : {`Rp ${openBid.toLocaleString().replace(/,/g, '.')}`}</p>
         </div>
       </div>
       <div className="h-2" />
@@ -120,17 +121,26 @@ const CardAuction = () => {
       <div className="h-2" />
       <div className="flex flex-row flex-wrap">
         {multiplication.map((item, index) => {
+          const selected = nominal ? (nominal.id === item.id ? true : false) : false;
+
           return (
             <button
+              onClick={() => setNominal(item)}
               key={index}
-              className="bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-1 rounded mr-2 mb-2"
+              className={
+                'text-white font-bold py-2 px-1 rounded mr-2 mb-2 ' +
+                (selected ? 'bg-indigo-700' : 'bg-blue-300')
+              }
             >
               {`Rp ${item.nominal.toLocaleString().replace(/,/g, '.')}`}
             </button>
           );
         })}
       </div>
-      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full">
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
+        onClick={() => onSubmitBid(nominal.nominal)}
+      >
         Bid Now
       </button>
     </div>
