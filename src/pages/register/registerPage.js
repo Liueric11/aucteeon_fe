@@ -46,14 +46,14 @@ const RegisterPage = () => {
         <div className="my-4"></div>
         <input
           name="firstname"
-          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          onChange={(e) => setInput({ ...input, firstname: e.target.value })}
           placeholder="Masukkan Nama Depan"
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
         />
         <div className="my-4"></div>
         <input
           name="lastname"
-          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          onChange={(e) => setInput({ ...input, lastname: e.target.value })}
           placeholder="Masukkan Nama Belakang"
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
         />
@@ -62,7 +62,7 @@ const RegisterPage = () => {
         <input
           type="number"
           name="phoneNumber"
-          onChange={(e) => setInput({ ...input, password: e.target.value })}
+          onChange={(e) => setInput({ ...input, phoneNumber: e.target.value })}
           placeholder="Masukkan Nomor Telepon"
           className="border-b border-slate-300 focus:outline-none py-1 pl-2  border-solid  w-full"
         />
