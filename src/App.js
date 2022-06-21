@@ -30,11 +30,11 @@ export default function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />
             <Route path="/transaction-detail" element={<TransactionDetailPage />} />
-            <Route path="add-product" element={<AddProductPage />} />
+            <Route path="/add-product" element={<AddProductPage />} />
             <Route path="/detail-product/:id" element={<DetailPage />} />
-            <Route path="user" element={<User />} />
-            <Route path="register" element={<RegisterPage />} />
-            <Route path="login" element={<LoginPage />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="**" element={<NotFound />} />
           </Routes>
         </div>
