@@ -49,7 +49,7 @@ const ProductDescription = ({ data, highestBid }) => {
 
   return (
     <div className="flex flex-col min-w-[350px] md:min-w-[500px] lg:min-w-[380px]">
-      <p className="font-bold text-xl">{data.name}</p>
+      <p className="font-bold text-2xl">{data.name}</p>
       <div className="h-4" />
       <div className="flex flex-row justify-between">
         <div className="flex flex-col">
