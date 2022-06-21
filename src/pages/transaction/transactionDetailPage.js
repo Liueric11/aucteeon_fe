@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import useFetchOrderDetail from 'src/hooks/useFetchOrderDetail';
+import * as moment from 'moment';
+import { getOrderDetail, updateOrder } from 'src/api';
+import { toast } from 'react-toastify';
 const TransactionDetailPage = () => {
-  const { itemDetail, setItemDetail } = useState();
-  const { paymentProof, setPaymentProf } = useState();
+  const params = useParams();
+  const { order, setOrder } = useFetchOrderDetail(1);
   const history = useNavigate();
-
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -27,11 +29,39 @@ const TransactionDetailPage = () => {
     if (file.size > 1048576) {
       alert('File Terlalu besar');
     }
-    setPaymentProf(base64);
+    setOrder({
+      ...order,
+      imageProof: base64,
+      statusTemp: 'PAID'
+    });
   };
 
   const deleteImage = () => {
-    setPaymentProf('');
+    setOrder({
+      ...order,
+      imageProof: '',
+      statusTemp: 'NOT_PAID'
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const body = order;
+    body.status = order.statusTemp;
+    const id = 1;
+    updateOrder({ body, id }, (data, err) => {
+      if (err) {
+        toast(err);
+      } else {
+        getOrderDetail(1, (user, err) => {
+          if (err || data === null || data === 'null') {
+            history('/');
+          }
+          toast('Update Order Success');
+          setOrder({ ...data });
+        });
+      }
+    });
   };
 
   return (
@@ -45,7 +75,7 @@ const TransactionDetailPage = () => {
             <img
               className="object-scale-down rounded-2xl"
               src={'https://macstore.id/konten/uploads/2019/11/MWP22.jpeg'}
-              alt="image product"
+              alt="xx product"
             />
           </div>
           <div className="flex flex-col flex-wrap md:w-2/3">
@@ -53,20 +83,32 @@ const TransactionDetailPage = () => {
               <span className="text-xl font-semibold">Airpods Pro</span>
             </div>
             <div className="flex flex-row items-center justify-between mb-4 gap-2">
+              <span className="text-base font-medium">Invoice: </span>
+              <span className="text-base font-medium">{order?.orderNumber}</span>
+            </div>
+            <div className="flex flex-row items-center justify-between mb-4 gap-2">
               <span className="text-base font-medium">Win Date: </span>
-              <span className="text-base font-medium">9 January 2022</span>
+              <span className="text-base font-medium">
+                {order?.product?.dateEnd ? moment().format('DD MMMM YYYY') : ''}
+              </span>
             </div>
             <div className="flex flex-row items-center justify-between mb-4 gap-2">
               <span className="text-base font-medium">Seller Name: </span>
-              <span className="text-base font-medium">Gunawan</span>
+              <span className="text-base font-medium">
+                {`${order?.product?.productOwner?.firstname} ${order?.product?.productOwner?.lastname}`}
+              </span>
             </div>
-            <div className="flex flex-row items-center justify-between mb-4 gap-2">
-              <span className="text-base font-medium">Invoice: </span>
-              <span className="text-base font-medium">INV/20210609/MPL/1307442403</span>
-            </div>
+
             <div className="flex flex-row items-center justify-between mb-4 gap-2">
               <span className="text-base font-medium">Final Price: </span>
-              <span className="text-base font-medium">Rp 3.100.000</span>
+              <span className="text-base font-medium">
+                Rp {order?.priceBid?.toLocaleString().replace(/,/g, '.')}
+              </span>
+            </div>
+
+            <div className="flex flex-row items-center justify-between mb-4 gap-2">
+              <span className="text-base font-medium">Order Status: </span>
+              <span className="text-base font-medium">{order?.status}</span>
             </div>
           </div>
         </div>
@@ -75,15 +117,16 @@ const TransactionDetailPage = () => {
         </div>
         <div className=" flex flex-row flex-wrap w-full justify-center">
           <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col md:px-16 px-6 py-8 m-4">
-            <img className="w-96" src={paymentProof} alt="" />
-            {!paymentProof ? (
+            <img className="w-96" src={order?.imageProof} alt="" />
+            {!order?.imageProof?.length > 0 && (
               <input
                 type="file"
                 onChange={(e) => {
                   uploadImage(e);
                 }}
               />
-            ) : (
+            )}
+            {order?.status === 'NOT_PAID' && (
               <button
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-6"
                 onClick={() => {
@@ -95,15 +138,17 @@ const TransactionDetailPage = () => {
             )}
           </div>
         </div>
-        <div className="mx-8 my-4">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded w-full"
-            onClick=""
-          >
-            Submit Proof
-          </button>
-        </div>
+        {order?.status === 'NOT_PAID' && (
+          <div className="mx-8 my-4">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded w-full"
+              onClick={handleSubmit}
+            >
+              Submit Proof
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
