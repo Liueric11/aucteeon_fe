@@ -6,13 +6,6 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const User = () => {
-  // const [user, setUser] = useState({
-  //   firstname: '',
-  //   lastname: '',
-  //   avatar: TempProfile,
-  //   address: '',
-  //   phoneNumber: ''
-  // });
   const { user, setUser } = useFetchGetUser();
   const [isEdit, setIsEdit] = useState(false);
   const history = useNavigate();
@@ -55,7 +48,7 @@ const User = () => {
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setUser({ ...user, avatar: base64 });
+    setUser({ ...user, avatar: base64, newAvatar: base64 });
     setIsEdit(true);
   };
 
