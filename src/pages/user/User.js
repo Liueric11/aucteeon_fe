@@ -4,6 +4,7 @@ import TempProfile from '../../assets/profile.png';
 import { updateUser, getUser } from '../../api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Navbar from 'src/components/Navbar';
 
 const User = () => {
   const { user, setUser } = useFetchGetUser();
@@ -54,6 +55,7 @@ const User = () => {
 
   return (
     <div className="flex justify-center">
+      <Navbar />
       <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm max-w-[700px]">
         <div className="border-solid border-b-2 border-slate-200 mt-2 pl-2 px-8">
           <p className="text-2xl md:text-3xl font-bold m-2">Biodata</p>

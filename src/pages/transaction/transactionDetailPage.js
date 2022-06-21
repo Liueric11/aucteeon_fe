@@ -4,6 +4,7 @@ import useFetchOrderDetail from 'src/hooks/useFetchOrderDetail';
 import * as moment from 'moment';
 import { getOrderDetail, updateOrder } from 'src/api';
 import { toast } from 'react-toastify';
+import Navbar from 'src/components/Navbar';
 const TransactionDetailPage = () => {
   const params = useParams();
   const { order, setOrder } = useFetchOrderDetail(1);
@@ -66,6 +67,7 @@ const TransactionDetailPage = () => {
 
   return (
     <div className="flex justify-center">
+      <Navbar />
       <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm md:w-3/4 w-11/12">
         <div className="mt-4 px-8">
           <p className="font-semibold text-3xl">Order Details</p>

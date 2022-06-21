@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
 import getDetailProduct from 'src/api/detailProduct/getDetailProduct';
 import { io } from 'socket.io-client';
+import Navbar from 'src/components/Navbar';
 
 const DetailPage = () => {
   const history = useNavigate();
@@ -98,6 +99,7 @@ const DetailPage = () => {
 
   return (
     <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
+      <Navbar />
       {product && (
         <div className="col-span-1  lg:col-span-3 sm:mx-auto">
           <img
