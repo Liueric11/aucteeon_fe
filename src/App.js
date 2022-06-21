@@ -25,7 +25,6 @@ export default function App() {
       <div className=" h-screen flex justify-between flex-col">
         <div className="container mx-auto">
           <ToastContainer />
-          <Navbar />
           <div className="my-36" />
           <Routes>
             <Route path="/" element={<Homepage />} />

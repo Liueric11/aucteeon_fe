@@ -8,6 +8,7 @@ import { io } from 'socket.io-client';
 import TempProfile from '../../assets/profile.png';
 import moment from 'moment';
 import { Oval } from 'react-loader-spinner';
+import Navbar from 'src/components/Navbar';
 
 const DetailPage = () => {
   const history = useNavigate();
@@ -97,11 +98,9 @@ const DetailPage = () => {
     socket.emit('auction-bid', args);
   };
 
-  console.log(listBidding, 'list');
-  console.log(product, 'product');
-
   return (
     <>
+      <Navbar />
       {product ? (
         <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
           {product && (

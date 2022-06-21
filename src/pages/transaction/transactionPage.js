@@ -1,6 +1,7 @@
 import React from 'react';
 import useFetchHistory from 'src/hooks/useFetchHistory';
 import moment from 'moment';
+import Navbar from 'src/components/Navbar';
 //TODO guvian color conditioning on item['status']
 
 const TransactionPage = () => {
@@ -8,6 +9,7 @@ const TransactionPage = () => {
   console.log(historyList);
   return (
     <div className="flex flex-col">
+      <Navbar />
       <span className="flex md:pl-48 justify-center md:justify-start pt-4 font-semibold text-3xl">
         Transaction History
       </span>

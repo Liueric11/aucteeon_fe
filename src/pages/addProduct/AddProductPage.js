@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import createNewProduct from 'src/api/product/createNewProduct';
+import Navbar from 'src/components/Navbar';
 import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
 // import addImage from 'src/assets/add-image.png';
 
@@ -89,6 +90,7 @@ const AddProductPage = () => {
   // console.log('bodyyyy', body);
   return (
     <div>
+      <Navbar />
       <p className="text-2xl md:text-3xl font-bold m-2 mb-10">Add Product</p>
       <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">
         <p className="mb-8 md:text-2xl text-xl font-semibold">Upload Product</p>
