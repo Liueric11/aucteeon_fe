@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useFetchGetUser from '../../hooks/useFetchGetUser';
-import TempProfile from '../../assets/image 26.png';
+import TempProfile from '../../assets/profile.png';
 import { updateUser, getUser } from '../../api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';

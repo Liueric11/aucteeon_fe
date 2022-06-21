@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TempProfile from '../assets/profile.png';
 
 const CardAuction = ({ onSubmitBid, openBid, listBidding }) => {
   const [nominal, setNominal] = useState(null);
@@ -42,7 +43,7 @@ const CardAuction = ({ onSubmitBid, openBid, listBidding }) => {
                 <div className="w-2" />
                 <img
                   className="w-8 h-8 rounded-full object-cover"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaTzpIkP8cTKBO1hib2MzkYsti5tMj1cFWng&usqp=CAU"
+                  src={item.user_detail.avatar ? item.user_detail.avatar : TempProfile}
                   alt="profile"
                 />
                 <div className="w-2" />

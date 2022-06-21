@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 import cartIcon from '../assets/cart.png';
 import { useNavigate } from 'react-router-dom';
 import useFetchGetUser from 'src/hooks/useFetchGetUser';
-import TempProfile from '../assets/image 26.png';
+import TempProfile from '../assets/profile.png';
 const Navbar = () => {
   const history = useNavigate();
   const { user } = useFetchGetUser();

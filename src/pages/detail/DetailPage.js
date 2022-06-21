@@ -42,7 +42,7 @@ const DetailPage = () => {
       socket.on('auction-join-success', (res) => {
         console.log('res success', res);
         if (res && Array.isArray(res.list)) {
-          setHighestBid(res.highestBid);
+          setHighestBid(res.highestBid.bidValue ? res.highestBid.bidValue : 0);
           setListBidding(res.list);
         }
       });
@@ -67,7 +67,7 @@ const DetailPage = () => {
       socket.on('auction-bid-success', (res) => {
         console.log('res bid success', res);
         setListBidding(res.list);
-        setHighestBid(res.highestBid);
+        setHighestBid(res.highestBid.bidValue ? res.highestBid.bidValue : 0);
         // toast('Success Bid');
       });
 
@@ -93,8 +93,6 @@ const DetailPage = () => {
     console.log('args', args);
     socket.emit('auction-bid', args);
   };
-
-  console.log(product);
 
   return (
     <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
