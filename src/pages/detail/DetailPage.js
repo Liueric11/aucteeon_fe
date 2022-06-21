@@ -67,7 +67,7 @@ const DetailPage = () => {
       socket.on('auction-bid-success', (res) => {
         console.log('res bid success', res);
         setListBidding(res.list);
-        setHighestBid(res.highestBid.bidValue ? res.highestBid.bidValue : 0);
+        setHighestBid(res.highestBid);
         // toast('Success Bid');
       });
 
@@ -93,6 +93,8 @@ const DetailPage = () => {
     console.log('args', args);
     socket.emit('auction-bid', args);
   };
+
+  console.log(listBidding, 'list');
 
   return (
     <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
@@ -129,6 +131,9 @@ const DetailPage = () => {
               onSubmitBid={(val) => onSubmitAuctionBid(val)}
               openBid={product.initValue}
               listBidding={listBidding}
+              disable={
+                listBidding.length !== 0 ? listBidding[0].user_detail.userId === user.id : false
+              }
             />
           )}
         </div>

@@ -87,7 +87,7 @@ const ProductDescription = ({ data, highestBid }) => {
         <p className="font-normal" style={{ color: '#5A5B6A' }}>
           Category :{' '}
           <span style={{ color: '#2F80ED' }} className="font-bold">
-            Clothes
+            {data.category.name}
           </span>
         </p>
         <div className="h-4" />
