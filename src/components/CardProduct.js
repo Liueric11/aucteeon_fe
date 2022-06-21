@@ -73,7 +73,7 @@ const CardProduct = ({ data }) => {
               .toLocaleString()
               .replace(/,/g, '.')}`}</p>
           </div>
-          <div className="w-10" />
+          <div className="w-4" />
           <div className="flex-col">
             <p className="text-xs  font-semibold">
               {isWillCome ? 'Will Come In' : 'Time Remaining'}
