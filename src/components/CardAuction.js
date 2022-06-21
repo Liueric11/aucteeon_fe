@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TempProfile from '../assets/profile.png';
 
-const CardAuction = ({ onSubmitBid, openBid, listBidding, disable }) => {
+const CardAuction = ({ onSubmitBid, openBid, listBidding, disable, close }) => {
   const [nominal, setNominal] = useState(null);
   const multiplication = [
     {
@@ -82,15 +82,15 @@ const CardAuction = ({ onSubmitBid, openBid, listBidding, disable }) => {
       <button
         className={
           'text-white font-bold py-2 px-4 rounded w-full ' +
-          (disable ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600')
+          (close ? 'bg-green-600' : disable ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600')
         }
         onClick={() => {
           setNominal(null);
           onSubmitBid(nominal.nominal);
         }}
-        disabled={disable}
+        disabled={close ? true : disable}
       >
-        Bid Now
+        {close ? 'Done' : 'Bid Now'}
       </button>
     </div>
   );
