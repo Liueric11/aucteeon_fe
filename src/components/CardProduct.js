@@ -57,7 +57,7 @@ const CardProduct = ({ data }) => {
 
   return (
     <div
-      className="p-4 sm:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full h-96"
+      className="p-4 sm:w-60 bg-white rounded-2xl carousel-item border-2 border-slate-200 w-full h-96"
       onClick={onClickCard}
     >
       <div className="flex-col w-full justify-center flex">
@@ -68,24 +68,24 @@ const CardProduct = ({ data }) => {
         <hr className="my-2" />
         <div className="flex flex-row  w-full flex-wrap justify-between">
           <div className="flex-col mb-2">
-            <p className="text-sm  font-semibold">Open Bid</p>
+            <p className="text-xs  font-semibold">Open Bid From</p>
             <p className="text-sm md:text-base font-bold">{`Rp ${data.initValue
               .toLocaleString()
               .replace(/,/g, '.')}`}</p>
           </div>
           <div className="flex-col">
-            <p className="text-sm  font-semibold">
+            <p className="text-xs  font-semibold">
               {isWillCome ? 'Will Come In' : 'Time Remaining'}
             </p>
             <p className="text-sm md:text-base font-bold text-red-700">
               {yearsLeft > 0
-                ? `${yearsLeft} Tahun lagi`
+                ? `${yearsLeft} Year`
                 : monthsLeft > 0
-                ? monthsLeft + ' Bulan lagi'
+                ? monthsLeft + ' Month'
                 : weeksLeft > 0
-                ? weeksLeft + ' Minggu lagi'
+                ? weeksLeft + ' Week'
                 : daysLeft > 0
-                ? daysLeft + ' Hari lagi'
+                ? daysLeft + ' Day'
                 : hoursLeft > 0
                 ? moment.duration(timeLeft, 'seconds').format('HH:mm:ss', { trim: false })
                 : minutesLeft > 0
