@@ -56,7 +56,7 @@ const User = () => {
     <div className="flex justify-center">
       <div className="border-solid border-2 border-slate-200 m-10 rounded-lg min-w-[400px] drop-shadow-sm max-w-[700px]">
         <div className="border-solid border-b-2 border-slate-200 mt-2 pl-2 px-8">
-          <p>Biodata</p>
+          <p className="text-2xl md:text-3xl font-bold m-2">Biodata</p>
         </div>
         <div className="flex justify-between md:flex-row flex-col px-8">
           <div className="flex justify-center">
