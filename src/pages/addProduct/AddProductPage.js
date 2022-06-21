@@ -94,11 +94,10 @@ const AddProductPage = () => {
         <p className="mb-8 md:text-2xl text-xl font-semibold">Upload Product</p>
         <p className="mb-2 text-lg font-medium">Product Photo</p>
         <div className="flex flex-col ">
-          <div>
-            <p className="">Upload Gambar disini.</p>
-          </div>
-          <div className=" flex flex-row flex-wrap w-full">
-            <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col p-10 m-3">
+          <p className="">Upload Gambar disini.</p>
+
+          <div className=" flex flex-row flex-wrap ">
+            <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col py-10 px-2 m-3">
               <img className="w-96" src={input.images[0]} alt="" />
               {!input.images[0] ? (
                 <input
