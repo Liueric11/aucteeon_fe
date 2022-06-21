@@ -98,25 +98,27 @@ const DetailPage = () => {
 
   return (
     <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
-      <div className="col-span-1  lg:col-span-3 sm:mx-auto">
-        <img
-          className="rounded-md w-1/2 lg:w-full mx-auto"
-          src={product ? product.images[0] : ''}
-          alt="produk"
-        />
-        <div className="h-2" />
-        <div className="flex flex-row items-center">
+      {product && (
+        <div className="col-span-1  lg:col-span-3 sm:mx-auto">
           <img
-            className="w-8 h-8 rounded-full object-cover"
-            src={product.user_detail.avatar}
-            alt="profile"
+            className="rounded-md w-1/2 lg:w-full mx-auto"
+            src={product ? product.images[0] : ''}
+            alt="produk"
           />
-          <div className="w-3" />
-          <p className="font-bold">
-            {product.user_detail.firstname} {product.user_detail.lastname}
-          </p>
+          <div className="h-2" />
+          <div className="flex flex-row items-center">
+            <img
+              className="w-8 h-8 rounded-full object-cover"
+              src={product.user_detail.avatar}
+              alt="profile"
+            />
+            <div className="w-3" />
+            <p className="font-bold">
+              {product.user_detail.firstname} {product.user_detail.lastname}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
       <div className="col-span-1 lg:col-span-4 sm:mx-auto">
         <div className="flex justify-centers">
           {product && <ProductDescription data={product} highestBid={highestBid} />}
