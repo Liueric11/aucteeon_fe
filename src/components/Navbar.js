@@ -18,7 +18,6 @@ const Navbar = () => {
         <div className="flex" id="hamburger-mobile">
           <div
             className="md:hidden origin-top-right  right-4 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-            // role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
             tabIndex="-1"
@@ -104,6 +103,7 @@ const Navbar = () => {
                   ? 'visible flex flex-col origin-top-right  right-4 mt-2 w-auto p-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none gap-2'
                   : 'hidden'
               }
+              id="hamburger-desktop"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
