@@ -26,7 +26,7 @@ export default function App() {
         <div className="container mx-auto">
           <ToastContainer />
           <Navbar />
-
+          <div className="my-36" />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/transaction" element={<TransactionPage />} />

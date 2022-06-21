@@ -5,7 +5,7 @@ const CardProduct = (props) => {
   console.log('propsssss', props);
   return (
     <div className="p-4 sm:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full h-96">
-      <div className="flex-col w-full justify-center items-center flex">
+      <div className="flex-col w-full justify-center flex">
         <div className="h-60">
           <img
             src={props.data.images}
