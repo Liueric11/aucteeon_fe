@@ -27,14 +27,14 @@ export default function Index() {
             <ButtonBack
               role="button"
               aria-label="slide backward"
-              className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer"
+              className=" absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer"
               id="prev"
             >
               <svg
-                width={8}
-                height={14}
+                width={20}
+                height={40}
                 viewBox="0 0 8 14"
-                fill="none"
+                fill="black"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -53,9 +53,10 @@ export default function Index() {
                   className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                 >
                   {listProduct.map((data, index) => {
+                    console.log(data);
                     return (
-                      <Slide index={index} key={index}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
+                      <Slide index={index} key={data}>
+                        <div className="flex flex-shrink-0 relative w-full  mx-80">
                           <CardProduct data={data} />
                         </div>
                       </Slide>
@@ -71,10 +72,10 @@ export default function Index() {
               id="next"
             >
               <svg
-                width={8}
-                height={14}
+                width={20}
+                height={40}
                 viewBox="0 0 8 14"
-                fill="none"
+                fill="black"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -130,8 +131,8 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide index={index} key={index}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
+                      <Slide index={index} key={data}>
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60">
                           <CardProduct data={data} />
                         </div>
                       </Slide>
@@ -206,7 +207,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide key={index} index={index}>
+                      <Slide key={data} index={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>

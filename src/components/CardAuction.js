@@ -30,7 +30,9 @@ const CardAuction = ({ onSubmitBid, openBid, listBidding, disable }) => {
     <div className="flex flex-col items-start justify-center border-2 border-slate-200 rounded-2xl px-2 py-4">
       <div className="flex flex-row items-center justify-between w-full">
         <div className="flex flex-col">
-          <p className="">Open Bid : {`Rp ${openBid.toLocaleString().replace(/,/g, '.')}`}</p>
+          <p className="text-rose-600 font-bold text-xl">
+            Open Bid : {`Rp ${openBid.toLocaleString().replace(/,/g, '.')}`}
+          </p>
         </div>
       </div>
       <div className="h-2" />
