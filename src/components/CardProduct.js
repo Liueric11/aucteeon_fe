@@ -64,7 +64,7 @@ const CardProduct = ({ data }) => {
         <div className="h-60">
           <img src={data.images} width={200} height={200} alt="" className="object-cover h-48" />
         </div>
-        <p className="my-3 text-xl font-bold">{data.name}</p>
+        <p className="mt-3 text-xl font-bold">{data.name}</p>
         <hr className="my-2" />
         <div className="flex flex-row justify-between">
           <div className="flex-col mb-2">
