@@ -42,7 +42,7 @@ const DetailPage = () => {
       socket.on('auction-join-success', (res) => {
         console.log('res success', res);
         if (res && Array.isArray(res.list)) {
-          setHighestBid(res.highestBid.bidValue);
+          setHighestBid(res.highestBid);
           setListBidding(res.list);
         }
       });
@@ -79,7 +79,10 @@ const DetailPage = () => {
   }, [socket]);
 
   const onSubmitAuctionBid = (val) => {
-    const bidValue = highestBid + parseInt(val);
+    const bidValue =
+      highestBid > product.initValue
+        ? highestBid + parseInt(val)
+        : product.initValue + parseInt(val);
 
     const args = {
       userId: user.id,
@@ -90,6 +93,8 @@ const DetailPage = () => {
     console.log('args', args);
     socket.emit('auction-bid', args);
   };
+
+  console.log(product);
 
   return (
     <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
@@ -103,11 +108,13 @@ const DetailPage = () => {
         <div className="flex flex-row items-center">
           <img
             className="w-8 h-8 rounded-full object-cover"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaTzpIkP8cTKBO1hib2MzkYsti5tMj1cFWng&usqp=CAU"
+            src={product.user_detail.avatar}
             alt="profile"
           />
           <div className="w-3" />
-          <p className="font-bold">Anton Medan</p>
+          <p className="font-bold">
+            {product.user_detail.firstname} {product.user_detail.lastname}
+          </p>
         </div>
       </div>
       <div className="col-span-1 lg:col-span-4 sm:mx-auto">

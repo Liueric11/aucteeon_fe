@@ -1,8 +1,10 @@
 import React from 'react';
-
+import useFetchHistory from 'src/hooks/useFetchHistory';
 //TODO guvian color conditioning on item['status']
 
 const TransactionPage = () => {
+  const { historyList } = useFetchHistory();
+  console.log(historyList);
   const data = [
     {
       product_name: 'Buku Jadoel',

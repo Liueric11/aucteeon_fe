@@ -60,7 +60,7 @@ const CardProduct = ({ data }) => {
       className="p-4 sm:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full h-96"
       onClick={onClickCard}
     >
-      <div className="flex-col w-full justify-center items-center flex">
+      <div className="flex-col w-full justify-center flex">
         <div className="h-60">
           <img src={data.images} width={200} height={200} alt="" className="object-cover  h-48" />
         </div>
@@ -69,7 +69,9 @@ const CardProduct = ({ data }) => {
         <div className="flex flex-row  w-full flex-wrap justify-between">
           <div className="flex-col mb-2">
             <p className="text-sm  font-semibold">Open Bid</p>
-            <p className="text-sm md:text-base font-bold">Rp{data.initValue}</p>
+            <p className="text-sm md:text-base font-bold">{`Rp ${data.initValue
+              .toLocaleString()
+              .replace(/,/g, '.')}`}</p>
           </div>
           <div className="flex-col">
             <p className="text-sm  font-semibold">

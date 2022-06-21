@@ -11,7 +11,7 @@ export default function Index() {
   const { listProduct } = useFetchGetProduct();
 
   return (
-    <div className="container mx-auto bg-slate-100 rounded-3xl mt-20">
+    <div className="container mx-auto bg-slate-100 rounded-3xl mb-16">
       <div className="flex items-center justify-center w-full h-full py-8 px-4">
         {/* Carousel for desktop and large size devices */}
         <CarouselProvider
