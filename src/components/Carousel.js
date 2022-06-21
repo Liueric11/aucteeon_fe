@@ -9,63 +9,7 @@ import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
 
 export default function Index() {
   const { listProduct } = useFetchGetProduct();
-  const data = [
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    }
-  ];
+
   return (
     <div className="container mx-auto bg-slate-100 rounded-3xl mt-20">
       <div className="flex items-center justify-center w-full h-full py-8 px-4">
@@ -109,9 +53,8 @@ export default function Index() {
                   className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                 >
                   {listProduct.map((data, index) => {
-                    console.log(data);
                     return (
-                      <Slide index={index} key={data}>
+                      <Slide index={index} key={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
@@ -187,7 +130,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide index={index} key={data}>
+                      <Slide index={index} key={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
@@ -263,7 +206,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide key={data} index={index}>
+                      <Slide key={index} index={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>

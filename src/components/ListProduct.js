@@ -5,68 +5,6 @@ import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
 const ListProduct = () => {
   const { listProduct } = useFetchGetProduct();
   console.log('proddddd', listProduct);
-  const data = [
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    },
-    {
-      title: 'judul',
-      openBid: 10000,
-      timeRemaining: '01:20:30'
-    }
-  ];
 
   return (
     <div>
@@ -74,7 +12,7 @@ const ListProduct = () => {
         {listProduct.map((data, index) => {
           return (
             index < 8 && (
-              <div key={data} className="m-4">
+              <div key={index} className="m-4">
                 <CardProduct data={data} />
               </div>
             )

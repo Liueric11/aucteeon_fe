@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import CardAuction from 'src/components/CardAuction';
 import ProductDescription from 'src/components/ProductDescription';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import getDetailProduct from 'src/api/detailProduct/getDetailProduct';
 import { io } from 'socket.io-client';
 
 const DetailPage = () => {
   const history = useNavigate();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const user = JSON.parse(localStorage.getItem('user'));
   const [socket, setSocket] = useState(null);
@@ -21,7 +22,7 @@ const DetailPage = () => {
       }
     };
     const getProduct = async () => {
-      const data = await getDetailProduct({ id: 1 });
+      const data = await getDetailProduct({ id: id });
       setProduct({ ...data });
     };
     const getSocket = () => {

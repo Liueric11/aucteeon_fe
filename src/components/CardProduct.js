@@ -1,31 +1,98 @@
-import React from 'react';
-// import product from '../assets/product.png';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
-const CardProduct = (props) => {
-  console.log('propsssss', props);
+const CardProduct = ({ data }) => {
+  console.log('propsssss', data);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [minutesLeft, setMinutesLeft] = useState(0);
+  const [hoursLeft, setHourssLeft] = useState(0);
+  const [daysLeft, setDaysLeft] = useState(0);
+  const [weeksLeft, setWeeksLeft] = useState(0);
+  const [monthsLeft, setMonthsLeft] = useState(0);
+  const [yearsLeft, setYearsLeft] = useState(0);
+  //
+  const [isWillCome, setIsWillCome] = useState(false);
+  const [isOnGoing, setIsOnGoing] = useState(false);
+  const [isPassed, setIsPassed] = useState(false);
+
+  const history = useNavigate();
+
+  useEffect(() => {
+    const interval = data
+      ? setInterval(() => {
+          const now = moment();
+          const _isWillCome = moment(data.dateStarted.slice(0, -1)).isAfter(now);
+          const _isOnGoing = moment(data.dateEnd.slice(0, -1)).isAfter(now);
+          const _isPassed = moment(data.dateEnd.slice(0, -1)).isBefore(now);
+          setIsWillCome(_isWillCome);
+          setIsOnGoing(!_isWillCome && _isOnGoing);
+          setIsPassed(_isPassed);
+          const issueDate = _isWillCome
+            ? moment(data.dateStarted.slice(0, -1))
+            : moment(data.dateEnd.slice(0, -1));
+          const tl = issueDate.diff(now, 'seconds');
+          const minl = issueDate.diff(now, 'minutes');
+          const hl = issueDate.diff(now, 'hours');
+          const dl = issueDate.diff(now, 'days');
+          const wl = issueDate.diff(now, 'weeks');
+          const ml = issueDate.diff(now, 'months');
+          const yl = issueDate.diff(now, 'years');
+          setTimeLeft(tl > 0 ? tl : 0);
+          setMinutesLeft(minl > 0 ? minl : 0);
+          setHourssLeft(hl > 0 ? hl : 0);
+          setDaysLeft(dl > 0 ? dl : 0);
+          setWeeksLeft(wl > 0 ? wl : 0);
+          setMonthsLeft(ml > 0 ? ml : 0);
+          setYearsLeft(yl > 0 ? yl : 0);
+        }, 1000)
+      : null;
+
+    return () => clearInterval(interval);
+  }, [data]);
+
+  const onClickCard = () => {
+    history(`/detail-product/${data.id}`);
+  };
+
   return (
-    <div className="p-4 sm:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full h-96">
+    <div
+      className="p-4 sm:w-60 bg-white rounded-3xl carousel-item border-2 border-slate-200 w-full h-96"
+      onClick={onClickCard}
+    >
       <div className="flex-col w-full justify-center items-center flex">
         <div className="h-60">
-          <img
-            src={props.data.images}
-            width={200}
-            height={200}
-            alt=""
-            className="object-cover  h-48"
-          />
+          <img src={data.images} width={200} height={200} alt="" className="object-cover  h-48" />
         </div>
-        <p className="my-3 text-xl font-bold">{props.data.name}</p>
+        <p className="my-3 text-xl font-bold">{data.name}</p>
         <hr className="my-2" />
         <div className="flex flex-row  w-full flex-wrap justify-between">
           <div className="flex-col mb-2">
             <p className="text-sm  font-semibold">Open Bid</p>
-            <p className="text-sm md:text-base font-bold">Rp{props.data.initValue}</p>
+            <p className="text-sm md:text-base font-bold">Rp{data.initValue}</p>
           </div>
           <div className="flex-col">
-            <p className="text-sm  font-semibold">Time Remaining</p>
+            <p className="text-sm  font-semibold">
+              {isWillCome ? 'Will Come In' : 'Time Remaining'}
+            </p>
             <p className="text-sm md:text-base font-bold text-red-700">
-              {props.data.timeRemaining}
+              {yearsLeft > 0
+                ? `${yearsLeft} Tahun lagi`
+                : monthsLeft > 0
+                ? monthsLeft + ' Bulan lagi'
+                : weeksLeft > 0
+                ? weeksLeft + ' Minggu lagi'
+                : daysLeft > 0
+                ? daysLeft + ' Hari lagi'
+                : hoursLeft > 0
+                ? moment.duration(timeLeft, 'seconds').format('HH:mm:ss', { trim: false })
+                : minutesLeft > 0
+                ? moment.duration(timeLeft, 'seconds').format('mm:ss', { trim: false })
+                : timeLeft > 0
+                ? moment.duration(timeLeft, 'seconds').format('ss', { trim: false })
+                : isPassed
+                ? 'Waktu habis'
+                : '-'}
             </p>
           </div>
         </div>
