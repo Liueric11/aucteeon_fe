@@ -57,36 +57,36 @@ const CardProduct = ({ data }) => {
 
   return (
     <div
-      className="p-4  bg-white rounded-3xl carousel-item border-2 border-slate-200"
+      className="p-4  bg-white rounded-2xl carousel-item border-2 border-slate-200"
       onClick={onClickCard}
     >
       <div className="flex-col justify-center flex">
         <div className="h-60">
           <img src={data.images} width={200} height={200} alt="" className="object-cover h-48" />
         </div>
-        <p className="my-3 text-xl font-bold">{data.name}</p>
+        <p className="mt-3 text-xl font-bold">{data.name}</p>
         <hr className="my-2" />
         <div className="flex flex-row justify-between">
           <div className="flex-col mb-2">
-            <p className="text-sm  font-semibold">Open Bid</p>
-            <p className="text-sm md:text-base font-bold">{`Rp${data.initValue
+            <p className="text-xs  font-semibold">Open Bid From</p>
+            <p className="text-sm md:text-base font-bold">{`Rp ${data.initValue
               .toLocaleString()
               .replace(/,/g, '.')}`}</p>
           </div>
           <div className="w-10" />
           <div className="flex-col">
-            <p className="text-sm  font-semibold">
+            <p className="text-xs  font-semibold">
               {isWillCome ? 'Will Come In' : 'Time Remaining'}
             </p>
             <p className="text-sm md:text-base font-bold text-red-700">
               {yearsLeft > 0
-                ? `${yearsLeft} Tahun lagi`
+                ? `${yearsLeft} Year`
                 : monthsLeft > 0
-                ? monthsLeft + ' Bulan lagi'
+                ? monthsLeft + ' Month'
                 : weeksLeft > 0
-                ? weeksLeft + ' Minggu lagi'
+                ? weeksLeft + ' Week'
                 : daysLeft > 0
-                ? daysLeft + ' Hari lagi'
+                ? daysLeft + ' Day'
                 : hoursLeft > 0
                 ? moment.duration(timeLeft, 'seconds').format('HH:mm:ss', { trim: false })
                 : minutesLeft > 0
