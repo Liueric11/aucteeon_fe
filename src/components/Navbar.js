@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import cartIcon from '../assets/cart.png';
 import { useNavigate } from 'react-router-dom';
 import useFetchGetUser from 'src/hooks/useFetchGetUser';
@@ -7,6 +8,7 @@ import TempProfile from '../assets/profile.png';
 const Navbar = () => {
   const history = useNavigate();
   const { user } = useFetchGetUser();
+  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(1);
   return (
     <nav className="bg-dark bg-slate-100  border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-20 fixed">
       <div className="flex flex-wrap justify-between items-center w-full md:mx-4">
@@ -16,7 +18,7 @@ const Navbar = () => {
         <div className="flex" id="hamburger-mobile">
           <div
             className="md:hidden origin-top-right  right-4 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-            role="menu"
+            // role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
             tabIndex="-1"
@@ -73,23 +75,48 @@ const Navbar = () => {
               </a>
             </div>
           </button>
-
-          <button
-            type="button"
-            className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="dropdown"
-          >
-            <span className="sr-only">Open user menu</span>
-            <button onClick={() => history('user')}>
-              <img
-                className="w-8 h-8 rounded-full"
-                src={user?.avatar || TempProfile}
-                alt="userPhoto"
-              />
-            </button>
-          </button>
+          <div className="flex flex-col justify-center items-center">
+            <div>
+              <button
+                type="button"
+                className={
+                  isOpen
+                    ? 'hidden'
+                    : 'flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600'
+                }
+                id="user-menu-button"
+                aria-expanded="false"
+                data-dropdown-toggle="dropdown"
+              >
+                <span className="sr-only">Open user menu</span>
+                <button {...buttonProps}>
+                  <img
+                    className="w-8 h-8 rounded-full"
+                    src={user?.avatar || TempProfile}
+                    alt="userPhoto"
+                  />
+                </button>
+              </button>
+            </div>
+            <div
+              className={
+                isOpen
+                  ? 'visible flex flex-col origin-top-right  right-4 mt-2 w-auto p-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none gap-2'
+                  : 'hidden'
+              }
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+              tabIndex="-1"
+            >
+              <a {...itemProps[0]} onClick={() => history('user')}>
+                Profile
+              </a>
+              <a {...itemProps[1]} onClick={() => history('user')}>
+                Profile
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
