@@ -56,7 +56,7 @@ const TransactionDetailPage = () => {
       if (err) {
         toast(err);
       } else {
-        getOrderDetail(1, (user, err) => {
+        getOrderDetail(id, (user, err) => {
           if (err || data === null || data === 'null') {
             history('/');
           }
