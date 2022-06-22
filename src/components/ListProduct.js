@@ -4,7 +4,6 @@ import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
 
 const ListProduct = () => {
   const { listProduct } = useFetchGetProduct();
-  console.log('proddddd', listProduct);
 
   return (
     <div>

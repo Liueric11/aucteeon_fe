@@ -53,7 +53,6 @@ export default function Index() {
                   className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
                 >
                   {listProduct.map((data, index) => {
-                    console.log(data);
                     return (
                       <Slide index={index} key={data}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-40">

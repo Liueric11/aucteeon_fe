@@ -2,7 +2,6 @@ import React from 'react';
 import useFetchHistory from 'src/hooks/useFetchHistory';
 import moment from 'moment';
 import Navbar from 'src/components/Navbar';
-//TODO guvian color conditioning on item['status']
 
 const TransactionPage = () => {
   const { historyList, setHistory } = useFetchHistory();

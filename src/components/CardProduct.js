@@ -3,7 +3,6 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 
 const CardProduct = ({ data }) => {
-  console.log('propsssss', data);
   const [timeLeft, setTimeLeft] = useState(0);
   const [minutesLeft, setMinutesLeft] = useState(0);
   const [hoursLeft, setHourssLeft] = useState(0);

@@ -5,7 +5,6 @@ async function getListProduct(cb) {
   await axiosInstance
     .get('/v1/products')
     .then((res) => {
-      //   console.log('dataaa', res);
       cb(res.data.data.rows, null);
     })
     .catch((err) => {
