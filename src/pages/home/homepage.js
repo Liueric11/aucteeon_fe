@@ -7,11 +7,13 @@ const Homepage = () => {
   return (
     <div>
       <Navbar />
+
       <p className="text-2xl md:text-3xl font-bold m-2">Hot Today</p>
       <Carousel />
-
-      <p className="text-2xl md:text-3xl font-bold m-2">Recommended</p>
-      <ListProduct />
+      <div className="mx-5 sm:mx-0">
+        <p className="text-2xl md:text-3xl font-bold m-2">Recommended</p>
+        <ListProduct />
+      </div>
     </div>
   );
 };
