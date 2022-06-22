@@ -88,6 +88,19 @@ const DetailPage = () => {
     }
   }, [socket]);
 
+  useEffect(() => {
+    const interval = product
+      ? setInterval(() => {
+          const now = moment();
+          const _isPassed = moment(product.dateEnd.slice(0, -1)).isBefore(now);
+          if (_isPassed) {
+            history('/transaction');
+          }
+        }, 1000)
+      : null;
+    return () => clearInterval(interval);
+  }, [product]);
+
   const onSubmitAuctionBid = (val) => {
     const bidValue =
       highestBid > product.initValue
