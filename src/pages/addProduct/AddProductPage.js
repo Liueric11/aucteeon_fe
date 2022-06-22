@@ -97,7 +97,7 @@ const AddProductPage = () => {
           <p className="mb-8 md:text-2xl text-xl font-semibold">Upload Product</p>
           <p className="mb-2 text-lg font-medium">Product Photo</p>
           <div className="flex flex-col ">
-            <p className="">Upload Gambar disini.</p>
+            <p className="">Upload Here</p>
 
             <div className=" flex flex-row flex-wrap ">
               <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col py-10 px-2 m-3">
@@ -141,12 +141,9 @@ const AddProductPage = () => {
         </div>
         <div className="my-8"></div>
         <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">
-          <p className="mb-8 md:text-2xl text-xl font-semibold">Informasi Produk</p>
-          <p className="mb-2 text-lg font-medium">Nama Produk</p>
-          <p>
-            Nama min. 5 kata, terdiri dari jenis produk, merek, dan keterangan seperti warna, bahan,
-            atau tipe.
-          </p>
+          <p className="mb-8 md:text-2xl text-xl font-semibold">Product Information</p>
+          <p className="mb-2 text-lg font-medium">Product Name</p>
+
           <input
             type="text"
             id="name"
@@ -155,7 +152,7 @@ const AddProductPage = () => {
             required
             onChange={(e) => setInput({ ...input, name: e.target.value })}
           />
-          <p className="mb-2 text-lg font-medium">Kategori</p>
+          <p className="mb-2 text-lg font-medium">Category</p>
           <select
             className="form-select appearance-none
           border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
@@ -165,7 +162,7 @@ const AddProductPage = () => {
             }}
           >
             <option selected>
-              <p className="text-slate-300">Pilih Kategori</p>
+              <p className="text-slate-300">Select Category</p>
             </option>
             {listCategory.map((item, index) => {
               return (
@@ -175,7 +172,7 @@ const AddProductPage = () => {
               );
             })}
           </select>
-          <p className="mb-2 text-lg font-medium">Kondisi</p>
+          <p className="mb-2 text-lg font-medium">Conditions</p>
           <select
             className="form-select appearance-none
           border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
@@ -185,15 +182,15 @@ const AddProductPage = () => {
             }}
           >
             <option selected>
-              <p className="text-slate-300">Pilih Kondisi</p>
+              <p className="text-slate-300">Select Condition</p>
             </option>
-            <option value="new">Baru</option>
-            <option value="secondhand">Bekas</option>
+            <option value="new">New</option>
+            <option value="secondhand">Second</option>
           </select>
         </div>
         <div className="my-8"></div>
         <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">
-          <p className="mb-8 md:text-2xl text-xl font-semibold">Harga & Waktu Lelang</p>
+          <p className="mb-8 md:text-2xl text-xl font-semibold">Price & Auction Time</p>
           <div className="my-3" />
           <p className="text-lg font-medium">Open Price</p>
           <div className="flex flex-row items-center">
