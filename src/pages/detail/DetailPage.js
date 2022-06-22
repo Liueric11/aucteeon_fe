@@ -113,14 +113,14 @@ const DetailPage = () => {
               alt="produk"
             />
             <div className="h-2" />
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center mb-8">
               <img
                 className="w-8 h-8 rounded-full object-cover"
                 src={product.user_detail.avatar ? product.user_detail.avatar : TempProfile}
                 alt="profile"
               />
               <div className="w-3" />
-              <p className="font-bold">
+              <p className="font-bold text-base md:text-xl">
                 {product.user_detail.firstname} {product.user_detail.lastname}
               </p>
             </div>

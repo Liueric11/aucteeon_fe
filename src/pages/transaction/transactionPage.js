@@ -43,11 +43,19 @@ const TransactionPage = () => {
                     className="flex flex-row sm:flex-row justify-between items-center flex-wrap"
                   >
                     <div className="flex flex-row items-center">
-                      <span className="sm:pr-5 sm:text-base text-sm">{item?.orderNumber}</span>
+                      <span className="sm:pr-5 sm:text-base text-sm text-slate-400">
+                        {item?.orderNumber}
+                      </span>
                     </div>
-                    <div className="bg-green-600 flex px-1 py-1 rounded sm:w-20 w-auto justify-center">
-                      <span className="text-white sm:text-base text-sm">{item?.status}</span>
-                    </div>
+                    {item.status === 'WIN' ? (
+                      <div className="bg-green-600 flex px-1 py-1 rounded sm:w-20 w-auto justify-center">
+                        <span className="text-white sm:text-base text-sm">{item?.status}</span>
+                      </div>
+                    ) : (
+                      <div className="bg-red-600 flex px-1 py-1 rounded sm:w-20 w-auto justify-center">
+                        <span className="text-white sm:text-base text-sm">{item?.status}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="flex flex-row items-center py-1">
                     <div className="sm:px-1 pr-1">
@@ -64,7 +72,7 @@ const TransactionPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="sm:text-base text-sm">
+                    <span className="sm:text-lg font-bold text-sm">
                       {`${item?.product?.productOwner?.firstname} ${item?.product?.productOwner?.lastname}`}
                     </span>
                   </div>
@@ -79,7 +87,7 @@ const TransactionPage = () => {
                     />
                     <div className="flex flex-col sm:items-end flex-wrap">
                       <span className="text-xl font-bold">{item.product.name}</span>
-                      <span className="text-sm font-medium">
+                      <span className="text-sm font-medium text-slate-400">
                         {moment(item?.product?.dateEnd).format('DD MMM YYYY')}
                       </span>
                       <span className="text-lg font-medium">{`Rp ${item?.priceBidLatest
