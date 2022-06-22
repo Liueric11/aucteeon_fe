@@ -146,7 +146,7 @@ const DetailPage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center h-[480px]">
           <Oval color="#00BFFF" height={80} width={80} />
         </div>
       )}

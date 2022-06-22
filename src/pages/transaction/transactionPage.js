@@ -22,16 +22,21 @@ const TransactionPage = () => {
                 key={Index}
                 className="w-3/4 border-2 border-slate-200 px-4 py-4 rounded-2xl my-4"
               >
-                <div id="first_row" className="flex flex-row justify-between items-center">
+                <div
+                  id="first_row"
+                  className="flex flex-row sm:flex-row justify-between items-center flex-wrap"
+                >
                   <div className="flex flex-row items-center">
-                    <span className="pr-5">INV/20210609/MPL/1307442405</span>
+                    <span className="sm:pr-5 sm:text-base text-sm">
+                      INV/20210609/MPL/1307442405
+                    </span>
                   </div>
-                  <div className="bg-green-600 flex px-1 py-1 rounded w-20 justify-center">
-                    <span className="text-white">{item.status}</span>
+                  <div className="bg-green-600 flex px-1 py-1 rounded sm:w-20 w-auto justify-center">
+                    <span className="text-white sm:text-base text-sm">{item.status}</span>
                   </div>
                 </div>
                 <div className="flex flex-row items-center py-1">
-                  <div className="px-1">
+                  <div className="sm:px-1 pr-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
@@ -45,15 +50,20 @@ const TransactionPage = () => {
                       />
                     </svg>
                   </div>
-                  <span>{item.product.productOwner.firstname}</span>
+                  <span className="sm:text-base text-sm">
+                    {item.product.productOwner.firstname}
+                  </span>
                 </div>
-                <div id="second_row" className="flex flex-row justify-between items-end py-1">
+                <div
+                  id="second_row"
+                  className="flex sm:flex-row flex-col justify-between sm:items-end items-center py-1"
+                >
                   <img
                     className="object-scale-down w-32 h-32 rounded-2xl"
                     src={item.product.images[0]}
                     alt="product"
                   />
-                  <div className="flex flex-col items-end">
+                  <div className="flex flex-col sm:items-end flex-wrap">
                     <span className="text-xl font-bold">{item.product.name}</span>
                     <span className="text-sm font-medium">
                       {moment(item.product.dateEnd).format('DD MMM YYYY')}
