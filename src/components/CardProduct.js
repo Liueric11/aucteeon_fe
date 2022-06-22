@@ -67,14 +67,14 @@ const CardProduct = ({ data }) => {
         <hr className="my-2" />
         <div className="flex flex-row justify-between">
           <div className="flex-col mb-2">
-            <p className="text-xs  font-semibold">Open Bid From</p>
+            <p className="text-xs  font-semibold text-gray-400">Open Bid From</p>
             <p className="text-sm md:text-base font-bold">{`Rp ${data.initValue
               .toLocaleString()
               .replace(/,/g, '.')}`}</p>
           </div>
           <div className="w-4" />
           <div className="flex-col">
-            <p className="text-xs  font-semibold">
+            <p className="text-xs  font-semibold text-gray-400">
               {isWillCome ? 'Will Come In' : 'Time Remaining'}
             </p>
             <p className="text-sm md:text-base font-bold text-red-700">
