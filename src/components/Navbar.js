@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user } = useFetchGetUser();
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
   return (
-    <nav className="bg-dark bg-slate-100  border-white px-4 sm:px-4  rounded top-0 left-0 w-full flex items-center z-20 fixed">
+    <nav className="bg-dark bg-slate-100  border-white py-4 sm:py-0 px-4 sm:px-4  rounded top-0 left-0 w-full flex items-center z-20 fixed">
       <div className="flex justify-between items-center w-full md:mx-4">
         <div className="py-1 cursor-pointer block" onClick={() => history('/')}>
           <img className="w-24 sm:w-40" src={logo} alt="" />
