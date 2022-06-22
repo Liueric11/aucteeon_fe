@@ -151,16 +151,6 @@ const AddProductPage = () => {
             required
             onChange={(e) => setInput({ ...input, name: e.target.value })}
           />
-          <p className="mb-2 text-lg font-medium">Description</p>
-
-          <input
-            type="text"
-            id="desc"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
-            placeholder="Description"
-            required
-            onChange={(e) => setInput({ ...input, desc: e.target.value })}
-          />
           <p className="mb-2 text-lg font-medium">Category</p>
           <select
             className="form-select appearance-none
@@ -196,6 +186,17 @@ const AddProductPage = () => {
             <option value="new">New</option>
             <option value="secondhand">Second</option>
           </select>
+          <p className="mb-2 text-lg font-medium">Description</p>
+
+          <textarea
+            type="text"
+            id="desc"
+            rows="5"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
+            placeholder="Description"
+            required
+            onChange={(e) => setInput({ ...input, desc: e.target.value })}
+          />
         </div>
         <div className="my-8"></div>
         <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">
