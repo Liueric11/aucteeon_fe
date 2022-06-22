@@ -61,7 +61,7 @@ const CardProduct = ({ data }) => {
       onClick={onClickCard}
     >
       <div className="flex-col justify-center flex">
-        <div className="h-60">
+        <div className="h-48">
           <img src={data.images} width={200} height={200} alt="" className="object-cover h-48" />
         </div>
         <p className="mt-3 text-xl font-bold">{data.name}</p>
