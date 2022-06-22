@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchOrderDetail from 'src/hooks/useFetchOrderDetail';
 import * as moment from 'moment';
@@ -9,7 +9,8 @@ import { Oval } from 'react-loader-spinner';
 
 const TransactionDetailPage = () => {
   const { id } = useParams();
-  const { order, setOrder } = useFetchOrderDetail(id);
+  const [loading, setLoading] = useState(false);
+  const { order, setOrder } = useFetchOrderDetail(id, setLoading);
   const history = useNavigate();
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -69,7 +70,7 @@ const TransactionDetailPage = () => {
   return (
     <div className="flex justify-center">
       <Navbar />
-      {order.length === 0 ? (
+      {loading ? (
         <div className="flex justify-center items-center h-[480px]">
           <Oval color="#00BFFF" height={80} width={80} />
         </div>
@@ -79,9 +80,9 @@ const TransactionDetailPage = () => {
             <p className="font-semibold text-3xl">Order Details</p>
           </div>
           <div className="flex flex-row flex-wrap md:items-start md:justify-start items-center justify-center md:ml-8 my-4 gap-8">
-            <div className="border-solid border-2 border-slate-200 rounded-lg md:w-64 md:h-64 w-48 h-48">
+            <div className="rounded-lg md:w-60 md:h-60 w-48 h-48">
               <img
-                className="object-scale-down rounded-2xl"
+                className="object-cover rounded-2xl"
                 src={order?.product?.images[0]}
                 alt="xx product"
               />

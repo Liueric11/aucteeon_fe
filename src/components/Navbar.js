@@ -9,6 +9,11 @@ const Navbar = () => {
   const history = useNavigate();
   const { user } = useFetchGetUser();
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
+  const handleLogout = (e) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    history('/login');
+  };
   return (
     <nav className="bg-dark bg-slate-100  border-white py-4 sm:py-0 px-4 sm:px-4 rounded top-0 left-0 w-full flex items-center z-20 fixed">
       <div className="flex justify-between items-center w-full md:mx-4">
@@ -105,14 +110,14 @@ const Navbar = () => {
               <span
                 {...itemProps[0]}
                 className="hover:bg-blue-100 cursor-pointer px-2 rounded"
-                onClick={() => history('user')}
+                onClick={() => history('/user')}
               >
                 Profile
               </span>
               <span
                 {...itemProps[1]}
                 className="hover:bg-blue-100 cursor-pointer px-2 rounded"
-                onClick={() => history('user')}
+                onClick={handleLogout}
               >
                 Logout
               </span>

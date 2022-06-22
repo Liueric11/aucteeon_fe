@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getHistoryList } from '../api';
 import { useNavigate } from 'react-router-dom';
 
-export default function useFetchHistory() {
+export default function useFetchHistory(setLoading) {
   const [historyList, setHistory] = useState([]);
   const history = useNavigate();
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function useFetchHistory() {
           localStorage.removeItem('user');
           history('/login');
         }
+        setLoading(false);
         setHistory({ ...data });
       });
     }
@@ -22,7 +23,7 @@ export default function useFetchHistory() {
       isApiSubscribed = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history]);
+  }, [history, setLoading]);
 
   return { historyList, setHistory };
 }

@@ -47,7 +47,7 @@ const DetailPage = () => {
     if (socket && product) {
       // auction join
       socket.on('auction-join-success', (res) => {
-        console.log('res success', res);
+        // console.log('res success', res);
         if (res && Array.isArray(res.list)) {
           setHighestBid(res.highestBid.bidValue ? res.highestBid.bidValue : 0);
           setListBidding(res.list);
@@ -55,7 +55,7 @@ const DetailPage = () => {
       });
 
       socket.on('auction-join-failed', (res) => {
-        console.log('res failed', res);
+        // console.log('res failed', res);
         toast('Failed Join Auction');
       });
 
@@ -63,7 +63,7 @@ const DetailPage = () => {
         userId: user.id,
         productId: product.id
       };
-      console.log('args', args);
+      // console.log('args', args);
       socket.emit('auction-join', args);
     }
   }, [socket, product]);
@@ -72,14 +72,14 @@ const DetailPage = () => {
     // auction bid
     if (socket) {
       socket.on('auction-bid-success', (res) => {
-        console.log('res bid success', res);
+        // console.log('res bid success', res);
         setListBidding(res.list);
         setHighestBid(res.highestBid);
         // toast('Success Bid');
       });
 
       socket.on('auction-bid-failed', (res) => {
-        console.log('res bid failed', res);
+        // console.log('res bid failed', res);
         // toast('Failed Bid');
       });
     }
@@ -97,7 +97,7 @@ const DetailPage = () => {
       bidValue
     };
 
-    console.log('args', args);
+    // console.log('args', args);
     socket.emit('auction-bid', args);
   };
 
