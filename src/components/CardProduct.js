@@ -12,7 +12,7 @@ const CardProduct = ({ data }) => {
   const [yearsLeft, setYearsLeft] = useState(0);
   //
   const [isWillCome, setIsWillCome] = useState(false);
-  const [isOnGoing, setIsOnGoing] = useState(false);
+  const [, setIsOnGoing] = useState(false);
   const [isPassed, setIsPassed] = useState(false);
 
   const history = useNavigate();

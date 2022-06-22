@@ -55,7 +55,7 @@ export default function Index() {
                   {listProduct.map((data, index) => {
                     return (
                       <Slide index={index} key={index}>
-                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-40">
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60">
                           <CardProduct data={data} />
                         </div>
                       </Slide>

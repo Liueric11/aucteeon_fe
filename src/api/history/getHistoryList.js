@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 async function getHistoryList(cb) {
   await axiosInstance
-    .get('/v1/history')
+    .get('/v1/history?length=100')
     .then((res) => {
       cb(res.data.data, null);
     })

@@ -47,6 +47,7 @@ const TransactionPage = () => {
                         {item?.orderNumber}
                       </span>
                     </div>
+
                     {item.status === 'WIN' ? (
                       <div className="bg-green-600 flex px-1 py-1 rounded sm:w-20 w-auto justify-center">
                         <span className="text-white sm:text-base text-sm">{item?.status}</span>

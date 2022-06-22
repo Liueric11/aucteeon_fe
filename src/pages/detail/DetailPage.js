@@ -45,6 +45,7 @@ const DetailPage = () => {
     checkAuth();
     getProduct();
     getSocket();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ const DetailPage = () => {
       // console.log('args', args);
       socket.emit('auction-join', args);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket, product]);
 
   useEffect(() => {
@@ -102,6 +104,7 @@ const DetailPage = () => {
         }, 1000)
       : null;
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
   const onSubmitAuctionBid = (val) => {
