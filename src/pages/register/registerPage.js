@@ -36,7 +36,7 @@ const RegisterPage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <img className="w-52 my-12" src={logo} alt="" />
+      <img className="w-52 mb-12" src={logo} alt="" />
       <div className="p-8 rounded-3xl border-slate-100 border drop-shadow-md lg:w-2/6">
         <p className="text-2xl font-bold mb-2">Sign Up Now</p>
         <div className="flex flex-row mb-6">
