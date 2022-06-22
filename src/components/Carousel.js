@@ -56,7 +56,7 @@ export default function Index() {
                     console.log(data);
                     return (
                       <Slide index={index} key={data}>
-                        <div className="flex flex-shrink-0 relative w-full mx-20">
+                        <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-40">
                           <CardProduct data={data} />
                         </div>
                       </Slide>
