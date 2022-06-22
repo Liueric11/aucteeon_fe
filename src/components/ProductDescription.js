@@ -60,13 +60,13 @@ const ProductDescription = ({ data, highestBid }) => {
           <p className="font-bold">{isWillCome ? 'Will Come In' : 'Time Remaining'}</p>
           <p className="font-bold">
             {yearsLeft > 0
-              ? `${yearsLeft} Tahun lagi`
+              ? `${yearsLeft} Year`
               : monthsLeft > 0
-              ? monthsLeft + ' Bulan lagi'
+              ? monthsLeft + ' Month'
               : weeksLeft > 0
-              ? weeksLeft + ' Minggu lagi'
+              ? weeksLeft + ' Week'
               : daysLeft > 0
-              ? daysLeft + ' Hari lagi'
+              ? daysLeft + ' Day'
               : hoursLeft > 0
               ? moment.duration(timeLeft, 'seconds').format('HH:mm:ss', { trim: false })
               : minutesLeft > 0
@@ -74,7 +74,7 @@ const ProductDescription = ({ data, highestBid }) => {
               : timeLeft > 0
               ? moment.duration(timeLeft, 'seconds').format('ss', { trim: false })
               : isPassed
-              ? 'Waktu habis'
+              ? 'Timeout'
               : '-'}
           </p>
         </div>
