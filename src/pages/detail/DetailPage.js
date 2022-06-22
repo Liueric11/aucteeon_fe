@@ -33,7 +33,10 @@ const DetailPage = () => {
       setProduct({ ...data });
     };
     const getSocket = () => {
-      const currentSocket = io(process.env.REACT_APP_API_URL);
+      const currentSocket = io(process.env.REACT_APP_SOCKET_API, {
+        path: process.env.REACT_APP_SOCKET_PATH,
+        transports: ['polling']
+      });
       if (currentSocket) {
         setSocket(currentSocket);
       }
