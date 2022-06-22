@@ -69,9 +69,9 @@ const Navbar = () => {
 
           <button onClick={() => history('/transaction')}>
             <div className="mr-5">
-              <a href="#myCart" className="block">
+              <div className="block">
                 <img className="scale-75" src={cartIcon} alt="cartIcon" />
-              </a>
+              </div>
             </div>
           </button>
           <div className="flex flex-col justify-center items-center">
