@@ -56,6 +56,22 @@ const LoginPage = ({ increment, login, counter }) => {
         >
           Sign In Now
         </button>
+
+        <div className="flex flex-row items-center">
+          <div className="flex flex-1 bg-slate-300 h-0.5"></div>
+          <p className="px-4 text-sm text-slate-400">or login with</p>
+          <div className="flex flex-1 bg-slate-300 h-0.5"></div>
+        </div>
+
+        <button
+          type="submit"
+          className=" font-bold text-gray-500 py-2 px-4 rounded w-full my-6 border border-slate-300"
+        >
+          <div className="flex flex-row items-center">
+            <img width={35} src={google} alt="" />
+            <p className="self-center w-full mr-5">Google</p>
+          </div>
+        </button>
       </div>
     </div>
   );
