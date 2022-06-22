@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user } = useFetchGetUser();
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
   return (
-    <nav className="bg-dark bg-slate-100  border-white py-4 sm:py-0 px-4 sm:px-4  rounded top-0 left-0 w-full flex items-center z-20 fixed">
+    <nav className="bg-dark bg-slate-100  border-white py-4 sm:py-0 px-4 sm:px-4 rounded top-0 left-0 w-full flex items-center z-20 fixed">
       <div className="flex justify-between items-center w-full md:mx-4">
         <div className="py-1 cursor-pointer block" onClick={() => history('/')}>
           <img className="w-24 sm:w-40" src={logo} alt="" />
@@ -19,26 +19,26 @@ const Navbar = () => {
           <div className="flex sm:hidden">
             <div className="py-1 flex items-center" role="none">
               <div onClick={() => history('/add-product')}>
-                <p className="text-gray-700 block py-2 px-2 text-sm cursor-pointer  font-bold">
+                <span className="text-gray-700 block py-2 px-2 text-sm cursor-pointer hover:bg-blue-100 rounded font-bold">
                   Sell
-                </p>
+                </span>
               </div>
 
               <div onClick={() => history('/transaction')}>
-                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer font-bold">
+                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer hover:bg-blue-100 rounded font-bold">
                   My Cart
                 </p>
               </div>
 
               <button onClick={() => history('/user')}>
-                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer  font-bold">
+                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer  hover:bg-blue-100 rounded font-bold">
                   Profiles
                 </p>
               </button>
               <form method="POST" action="#" role="none">
                 <button
                   type="submit"
-                  className="text-gray-700 block w-full text-left px-2 py-2 text-sm  font-bold"
+                  className="text-gray-700 block w-full text-left px-2 py-2 text-sm  hover:bg-blue-100 rounded font-bold"
                   role="menuitem"
                   tabIndex="-1"
                   id="menu-item-3"
