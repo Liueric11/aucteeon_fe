@@ -27,6 +27,9 @@ const DetailPage = () => {
     };
     const getProduct = async () => {
       const data = await getDetailProduct({ id: id });
+      if (data === null) {
+        history('/transaction');
+      }
       setProduct({ ...data });
     };
     const getSocket = () => {
@@ -103,45 +106,42 @@ const DetailPage = () => {
       <Navbar />
       {product ? (
         <div className="grid grid-cols-1 gap-x-[36px] py-8 lg:grid-cols-10 px-4">
-          {product && (
-            <div className="col-span-1  lg:col-span-3 sm:mx-auto">
+          <div className="col-span-1  lg:col-span-3 sm:mx-auto">
+            <img
+              className="rounded-md w-1/2 lg:w-full mx-auto"
+              src={product ? product.images[0] : ''}
+              alt="produk"
+            />
+            <div className="h-2" />
+            <div className="flex flex-row items-center">
               <img
-                className="rounded-md w-1/2 lg:w-full mx-auto"
-                src={product ? product.images[0] : ''}
-                alt="produk"
+                className="w-8 h-8 rounded-full object-cover"
+                src={product.user_detail.avatar ? product.user_detail.avatar : TempProfile}
+                alt="profile"
               />
-              <div className="h-2" />
-              <div className="flex flex-row items-center">
-                <img
-                  className="w-8 h-8 rounded-full object-cover"
-                  src={product.user_detail.avatar ? product.user_detail.avatar : TempProfile}
-                  alt="profile"
-                />
-                <div className="w-3" />
-                <p className="font-bold">
-                  {product.user_detail.firstname} {product.user_detail.lastname}
-                </p>
-              </div>
+              <div className="w-3" />
+              <p className="font-bold">
+                {product.user_detail.firstname} {product.user_detail.lastname}
+              </p>
             </div>
-          )}
+          </div>
+
           <div className="col-span-1 lg:col-span-4 sm:mx-auto">
             <div className="flex justify-centers">
-              {product && <ProductDescription data={product} highestBid={highestBid} />}
+              <ProductDescription data={product} highestBid={highestBid} />
             </div>
           </div>
           <div className="col-span-1 lg:col-span-3">
             <div className="flex justify-center">
-              {product && (
-                <CardAuction
-                  onSubmitBid={(val) => onSubmitAuctionBid(val)}
-                  openBid={product.initValue}
-                  listBidding={listBidding}
-                  disable={
-                    listBidding.length !== 0 ? listBidding[0].user_detail.userId === user.id : false
-                  }
-                  close={moment(product.dateEnd.slice(0, -1)).isBefore(moment())}
-                />
-              )}
+              <CardAuction
+                onSubmitBid={(val) => onSubmitAuctionBid(val)}
+                openBid={product.initValue}
+                listBidding={listBidding}
+                disable={
+                  listBidding.length !== 0 ? listBidding[0].user_detail.userId === user.id : false
+                }
+                close={moment(product.dateEnd.slice(0, -1)).isBefore(moment())}
+              />
             </div>
           </div>
         </div>

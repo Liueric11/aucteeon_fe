@@ -2,13 +2,13 @@ import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import CardProduct from './CardProduct';
-import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
+import useFetchGetProductHotToday from 'src/hooks/useFetchGetProductHotToday';
 // import product from '../assets/product.png';
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function Index() {
-  const { listProduct } = useFetchGetProduct();
+  const { listProduct } = useFetchGetProductHotToday();
 
   return (
     <div className="container mx-auto bg-slate-100 w-full mb-16">
@@ -54,7 +54,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide index={index} key={data}>
+                      <Slide index={index} key={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-40">
                           <CardProduct data={data} />
                         </div>
@@ -130,7 +130,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide index={index} key={data}>
+                      <Slide index={index} key={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
@@ -206,7 +206,7 @@ export default function Index() {
                 >
                   {listProduct.map((data, index) => {
                     return (
-                      <Slide key={data} index={index}>
+                      <Slide key={index} index={index}>
                         <div className="flex flex-shrink-0 relative w-full sm:w-60 mx-80">
                           <CardProduct data={data} />
                         </div>
