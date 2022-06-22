@@ -10,11 +10,9 @@ const ListProduct = () => {
       <div className="flex flex-row flex-wrap bg-slate-100 sm:px-6 px-30 rounded-3xl justify-center mb-20">
         {listProduct.map((data, index) => {
           return (
-            index < 8 && (
-              <div key={index} className="m-4">
-                <CardProduct data={data} />
-              </div>
-            )
+            <div key={index} className="m-4">
+              <CardProduct data={data} />
+            </div>
           );
         })}
       </div>
