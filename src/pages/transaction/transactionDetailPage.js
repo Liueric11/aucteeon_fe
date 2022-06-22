@@ -117,7 +117,14 @@ const TransactionDetailPage = () => {
 
               <div className="flex flex-row items-center justify-between mb-4 gap-2">
                 <span className="text-base font-medium">Order Status: </span>
-                <span className="text-base font-medium">{order?.status}</span>
+                <span
+                  className={
+                    'text-base font-bold ' +
+                    (order?.status === 'NOT_PAID' ? 'text-red-700' : 'text-green-600')
+                  }
+                >
+                  {order?.status}
+                </span>
               </div>
             </div>
           </div>
