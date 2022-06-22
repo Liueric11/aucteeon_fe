@@ -20,7 +20,8 @@ const AddProductPage = () => {
     // multiplicationPrice: 0,
     images: [],
     dateStarted: '',
-    dateEnd: ''
+    dateEnd: '',
+    desc: ''
   });
 
   // useEffect(() => {
@@ -149,6 +150,16 @@ const AddProductPage = () => {
             placeholder="Contoh: Sepatu Pria (Jenis/Kategori Produk) + Merek + Keterangan"
             required
             onChange={(e) => setInput({ ...input, name: e.target.value })}
+          />
+          <p className="mb-2 text-lg font-medium">Description</p>
+
+          <input
+            type="text"
+            id="desc"
+            className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
+            placeholder="Description"
+            required
+            onChange={(e) => setInput({ ...input, desc: e.target.value })}
           />
           <p className="mb-2 text-lg font-medium">Category</p>
           <select

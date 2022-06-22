@@ -56,12 +56,12 @@ const TransactionDetailPage = () => {
       if (err) {
         toast(err);
       } else {
-        getOrderDetail(1, (user, err) => {
+        getOrderDetail(id, (order, err) => {
           if (err || data === null || data === 'null') {
             history('/');
           }
           toast('Update Order Success');
-          setOrder({ ...data });
+          setOrder({ ...order });
         });
       }
     });
