@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import logo from 'src/assets/logo.png';
-import google from 'src/assets/google-logo.png';
 // import { ActionCreators } from 'src/store/actions';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux/es/exports';
@@ -31,7 +30,7 @@ const LoginPage = ({ increment, login, counter }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <img className="w-52 my-12" src={logo} alt="" />
+      <img className="w-52 mb-12" src={logo} alt="" />
       <div className="p-8 rounded-3xl border-slate-100 border drop-shadow-md lg:w-2/6">
         <p className="text-2xl font-bold mb-2">Sign In</p>
         <div className="my-4"></div>
@@ -57,21 +56,12 @@ const LoginPage = ({ increment, login, counter }) => {
           Sign In Now
         </button>
 
-        <div className="flex flex-row items-center">
-          <div className="flex flex-1 bg-slate-300 h-0.5"></div>
-          <p className="px-4 text-sm text-slate-400">or login with</p>
-          <div className="flex flex-1 bg-slate-300 h-0.5"></div>
+        <div className="flex flex-row mb-2">
+          <p className="text-slate-400">Don&apos;t have an account? </p>
+          <p className="text-sky-500 ml-2 cursor-pointer" onClick={() => history('/register')}>
+            Sign Up
+          </p>
         </div>
-
-        <button
-          type="submit"
-          className=" font-bold text-gray-500 py-2 px-4 rounded w-full my-6 border border-slate-300"
-        >
-          <div className="flex flex-row items-center">
-            <img width={35} src={google} alt="" />
-            <p className="self-center w-full mr-5">Google</p>
-          </div>
-        </button>
       </div>
     </div>
   );
