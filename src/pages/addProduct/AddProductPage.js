@@ -81,9 +81,12 @@ const AddProductPage = () => {
     e.preventDefault();
 
     const keys = Object.keys(input);
-    if (input[keys] === '') {
-      toast('Please complete the filling form');
-    }
+    keys.forEach((key) => {
+      if (input[key] === '') {
+        toast('Please complete the filling form');
+      }
+    });
+
     // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
     // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
     const body = input;
