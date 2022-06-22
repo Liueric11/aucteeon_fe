@@ -18,6 +18,7 @@ const DetailPage = () => {
   const [socket, setSocket] = useState(null);
   const [highestBid, setHighestBid] = useState(0);
   const [listBidding, setListBidding] = useState([]);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -92,7 +93,9 @@ const DetailPage = () => {
     const interval = product
       ? setInterval(() => {
           const now = moment();
+          const _isWillCome = moment(product.dateStarted.slice(0, -1)).isAfter(now);
           const _isPassed = moment(product.dateEnd.slice(0, -1)).isBefore(now);
+          setDisable(_isWillCome);
           if (_isPassed) {
             history('/transaction');
           }
@@ -116,6 +119,8 @@ const DetailPage = () => {
     // console.log('args', args);
     socket.emit('auction-bid', args);
   };
+
+  console.log(product);
 
   return (
     <>
@@ -154,7 +159,11 @@ const DetailPage = () => {
                 openBid={product.initValue}
                 listBidding={listBidding}
                 disable={
-                  listBidding.length !== 0 ? listBidding[0].user_detail.userId === user.id : false
+                  disable
+                    ? true
+                    : listBidding.length !== 0
+                    ? listBidding[0].user_detail.userId === user.id
+                    : false
                 }
                 close={moment(product.dateEnd.slice(0, -1)).isBefore(moment())}
               />

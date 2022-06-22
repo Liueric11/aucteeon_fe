@@ -57,7 +57,7 @@ const ProductDescription = ({ data, highestBid }) => {
           <p className="font-bold">{`Rp ${highestBid.toLocaleString().replace(/,/g, '.')}`}</p>
         </div>
         <div className="flex flex-col">
-          <p className="font-bold">Time Remaining</p>
+          <p className="font-bold">{isWillCome ? 'Will Come In' : 'Time Remaining'}</p>
           <p className="font-bold">
             {yearsLeft > 0
               ? `${yearsLeft} Tahun lagi`

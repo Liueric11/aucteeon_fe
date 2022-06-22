@@ -153,7 +153,7 @@ const AddProductPage = () => {
           />
           <p className="mb-2 text-lg font-medium">Description</p>
 
-          <input
+          <textarea
             type="text"
             id="desc"
             className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
