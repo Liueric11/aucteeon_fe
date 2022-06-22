@@ -79,21 +79,24 @@ const AddProductPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let push = true;
     const keys = Object.keys(input);
     keys.forEach((key) => {
       if (input[key] === '') {
         toast('Please complete the filling form');
+        push = false;
       }
     });
 
     // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
     // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
-    const body = input;
-    body.dateStarted = deleteCharacter(input.dateStarted);
-    body.dateEnd = deleteCharacter(input.dateEnd);
+    if (push) {
+      const body = input;
+      body.dateStarted = deleteCharacter(input.dateStarted);
+      body.dateEnd = deleteCharacter(input.dateEnd);
 
-    await createNewProduct({ body, history });
+      await createNewProduct({ body, history });
+    }
   };
   // console.log('bodyyyy', body);
   return (
