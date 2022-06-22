@@ -8,7 +8,7 @@ import TempProfile from '../assets/profile.png';
 const Navbar = () => {
   const history = useNavigate();
   const { user } = useFetchGetUser();
-  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(1);
+  const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
   return (
     <nav className="bg-dark bg-slate-100  border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-20 fixed">
       <div className="flex flex-wrap justify-between items-center w-full md:mx-4">
@@ -100,7 +100,7 @@ const Navbar = () => {
             <div
               className={
                 isOpen
-                  ? 'visible flex flex-col origin-top-right  right-4 mt-2 w-auto p-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none gap-2'
+                  ? 'visible flex flex-col origin-top-right w-auto p-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none gap-2'
                   : 'hidden'
               }
               id="hamburger-desktop"
@@ -109,12 +109,20 @@ const Navbar = () => {
               aria-labelledby="menu-button"
               tabIndex="-1"
             >
-              <a {...itemProps[0]} onClick={() => history('user')}>
+              <span
+                {...itemProps[0]}
+                className="hover:bg-blue-100 cursor-pointer px-2 rounded"
+                onClick={() => history('user')}
+              >
                 Profile
-              </a>
-              <a {...itemProps[1]} onClick={() => history('user')}>
-                Profile
-              </a>
+              </span>
+              <span
+                {...itemProps[1]}
+                className="hover:bg-blue-100 cursor-pointer px-2 rounded"
+                onClick={() => history('user')}
+              >
+                Logout
+              </span>
             </div>
           </div>
         </div>
