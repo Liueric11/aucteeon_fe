@@ -10,42 +10,35 @@ const Navbar = () => {
   const { user } = useFetchGetUser();
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(1);
   return (
-    <nav className="bg-dark bg-slate-100  border-white px-2 sm:px-4 py-2.5 rounded top-0 left-0 w-full flex items-center z-20 fixed">
-      <div className="flex flex-wrap justify-between items-center w-full md:mx-4">
-        <div className="py-1 block cursor-pointer" onClick={() => history('/')}>
-          <img className="scale-75" src={logo} alt="" />
+    <nav className="bg-dark bg-slate-100  border-white px-4 sm:px-4  rounded top-0 left-0 w-full flex items-center z-20 fixed">
+      <div className="flex justify-between items-center w-full md:mx-4">
+        <div className="py-1 cursor-pointer block" onClick={() => history('/')}>
+          <img className="w-24 sm:w-40" src={logo} alt="" />
         </div>
         <div className="flex" id="hamburger-mobile">
-          <div
-            className="md:hidden origin-top-right  right-4 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabIndex="-1"
-          >
-            <div className="py-1" role="none">
+          <div className="flex sm:hidden">
+            <div className="py-1 flex items-center" role="none">
               <div onClick={() => history('/add-product')}>
-                <p className="text-gray-700 block px-4 py-2 text-sm cursor-pointer">Sell</p>
+                <p className="text-gray-700 block py-2 px-2 text-sm cursor-pointer  font-bold">
+                  Sell
+                </p>
               </div>
 
               <div onClick={() => history('/transaction')}>
-                <p className="text-gray-700 block px-4 py-2 text-sm cursor-pointer">My Cart</p>
+                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer font-bold">
+                  My Cart
+                </p>
               </div>
 
-              <button onClick={() => history('user')}>
-                <p
-                  href="#"
-                  className="text-gray-700 block px-4 py-2 text-sm cursor-pointer"
-                  role="menuitem"
-                  tabIndex="-1"
-                  id="menu-item-2"
-                >
+              <button onClick={() => history('/user')}>
+                <p className="text-gray-700 block  py-2 px-2  text-sm cursor-pointer  font-bold">
                   Profiles
                 </p>
               </button>
               <form method="POST" action="#" role="none">
                 <button
                   type="submit"
-                  className="text-gray-700 block w-full text-left px-4 py-2 text-sm"
+                  className="text-gray-700 block w-full text-left px-2 py-2 text-sm  font-bold"
                   role="menuitem"
                   tabIndex="-1"
                   id="menu-item-3"
@@ -69,9 +62,9 @@ const Navbar = () => {
 
           <button onClick={() => history('/transaction')}>
             <div className="mr-5">
-              <a href="#myCart" className="block">
+              <div className="block">
                 <img className="scale-75" src={cartIcon} alt="cartIcon" />
-              </a>
+              </div>
             </div>
           </button>
           <div className="flex flex-col justify-center items-center">
