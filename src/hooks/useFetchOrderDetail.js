@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getOrderDetail } from '../api';
 import { useNavigate } from 'react-router-dom';
 
-export default function useFetchOrderDetail(id = 1) {
+export default function useFetchOrderDetail(id, setLoading) {
   const [order, setOrder] = useState([]);
   const history = useNavigate();
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function useFetchOrderDetail(id = 1) {
           // kalo null ke sini
           history('/');
         }
+        setLoading(false);
         setOrder({ ...data });
       });
     }
@@ -21,7 +22,7 @@ export default function useFetchOrderDetail(id = 1) {
       isApiSubscribed = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history]);
+  }, [history, setLoading]);
 
   return { order, setOrder };
 }
