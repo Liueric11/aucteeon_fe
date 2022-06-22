@@ -22,7 +22,6 @@ const AddProductPage = () => {
     dateStarted: '',
     dateEnd: ''
   });
-  console.log('listtttkaka', input.images);
 
   // useEffect(() => {
   //   const checkAuth = () => {
@@ -84,7 +83,6 @@ const AddProductPage = () => {
     body.dateStarted = deleteCharacter(input.dateStarted);
     body.dateEnd = deleteCharacter(input.dateEnd);
 
-    console.log('kaaaaa', body);
     await createNewProduct({ body, history });
   };
   // console.log('bodyyyy', body);
