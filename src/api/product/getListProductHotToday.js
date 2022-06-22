@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 async function getListProductHotToday(cb) {
   await axiosInstance
-    .get('/v1/products/hot-today')
+    .get('/v1/products/hot-today?length=100')
     .then((res) => {
       cb(res.data.data.rows, null);
     })
