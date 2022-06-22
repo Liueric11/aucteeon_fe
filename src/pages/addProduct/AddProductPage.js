@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import createNewProduct from 'src/api/product/createNewProduct';
 import Navbar from 'src/components/Navbar';
 import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
@@ -78,6 +79,11 @@ const AddProductPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const keys = Object.keys(input);
+    if (input[keys] === '') {
+      toast('Please complete the filling form');
+    }
     // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
     // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
     const body = input;
@@ -206,7 +212,7 @@ const AddProductPage = () => {
           <div className="flex flex-row items-center">
             <p className="mr-2">Rp</p>
             <input
-              type="number"
+              type="text"
               id="initValue"
               className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-2"
               placeholder="10000"
