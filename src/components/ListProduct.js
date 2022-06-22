@@ -5,6 +5,8 @@ import useFetchGetProduct from 'src/hooks/useFetchGetProduct';
 const ListProduct = () => {
   const { listProduct } = useFetchGetProduct();
 
+  console.log(listProduct);
+
   return (
     <div>
       <div className="flex flex-row flex-wrap bg-slate-100 sm:px-6 px-30 rounded-3xl justify-center mb-20">
