@@ -56,7 +56,7 @@ const CardProduct = ({ data }) => {
 
   return (
     <div
-      className="p-4  bg-white rounded-2xl carousel-item border-2 border-slate-200"
+      className="p-4  bg-white rounded-2xl carousel-item border-2 border-slate-200 w-60"
       onClick={onClickCard}
     >
       <div className="flex-col justify-center flex">

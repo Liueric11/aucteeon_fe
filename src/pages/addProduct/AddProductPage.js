@@ -111,7 +111,7 @@ const AddProductPage = () => {
             <p className="">Upload Here</p>
 
             <div className=" flex flex-row flex-wrap ">
-              <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col py-10 px-2 m-3">
+              <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col py-10 px-2">
                 <img className="w-96" src={input.images[0]} alt="" />
                 {!input.images[0] ? (
                   <input
