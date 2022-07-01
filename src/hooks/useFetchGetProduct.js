@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 // import { getUser } from '../api';
 import { useNavigate } from 'react-router-dom';
-import getListCategory from 'src/api/product/getListCategory';
 import getListProduct from 'src/api/product/getListProduct';
 
 export default function useFetchGetProduct() {

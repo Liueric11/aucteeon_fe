@@ -18,9 +18,9 @@ export default function Index() {
           className="lg:block hidden w-full"
           naturalSlideWidth={100}
           isIntrinsicHeight={true}
-          totalSlides={12}
-          visibleSlides={4}
-          step={1}
+          totalSlides={10}
+          visibleSlides={5}
+          step="5"
           infinite={true}
         >
           <div className="w-full relative flex items-center justify-center ">

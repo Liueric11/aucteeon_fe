@@ -6,7 +6,8 @@ import createNewProduct from 'src/api/product/createNewProduct';
 import Navbar from 'src/components/Navbar';
 import useFetchGetCategory from 'src/hooks/useFetchGetCategory';
 // import addImage from 'src/assets/add-image.png';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 const AddProductPage = () => {
   const history = useNavigate();
   const { listCategory } = useFetchGetCategory();
@@ -21,9 +22,9 @@ const AddProductPage = () => {
     // multiplicationPrice: 0,
     images: [],
     dateStarted: '',
-    dateEnd: '',
-    desc: ''
+    dateEnd: ''
   });
+  const [desc, setDesc] = useState('');
 
   // useEffect(() => {
   //   const checkAuth = () => {
@@ -88,9 +89,14 @@ const AddProductPage = () => {
       }
     });
 
-    // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
-    // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
+    if (desc === '') {
+      toast('Please complete the filling form');
+      push = false;
+    }
     if (push) {
+      // setInput({ ...input, startBidTime: deleteCharacter(input.startBidTime) });
+      // setInput({ ...input, endBidTime: deleteCharacter(input.endBidTime) });
+      input.desc = desc;
       const body = input;
       body.dateStarted = deleteCharacter(input.dateStarted);
       body.dateEnd = deleteCharacter(input.dateEnd);
@@ -100,7 +106,7 @@ const AddProductPage = () => {
   };
   // console.log('bodyyyy', body);
   return (
-    <div>
+    <div className="w-min-['550px']">
       <Navbar />
       <div className="mx-5">
         <p className="text-2xl md:text-3xl font-bold m-2 mb-10">Add Product</p>
@@ -111,8 +117,8 @@ const AddProductPage = () => {
             <p className="">Upload Here</p>
 
             <div className=" flex flex-row flex-wrap ">
-              <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center justify-center flex flex-col py-10 px-2">
-                <img className="w-96" src={input.images[0]} alt="" />
+              <div className="border-dashed border-2 border-slate-400 rounded-2xl items-center sm:justify-center sm:w-96 sm:flex sm:flex-col py-10 px-2 m-3 w-60">
+                <img className="sm:w-96 w-10 " src={input.images[0]} alt="" />
                 {!input.images[0] ? (
                   <input
                     type="file"
@@ -200,16 +206,9 @@ const AddProductPage = () => {
             <option value="secondhand">Second</option>
           </select>
           <p className="mb-2 text-lg font-medium">Description</p>
-
-          <textarea
-            type="text"
-            id="desc"
-            rows="5"
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 my-5"
-            placeholder="Description"
-            required
-            onChange={(e) => setInput({ ...input, desc: e.target.value })}
-          />
+          <div className="sm:mb-10 mb-16">
+            <ReactQuill style={{ height: '10rem' }} theme="snow" value={desc} onChange={setDesc} />
+          </div>
         </div>
         <div className="my-8"></div>
         <div className="p-12 rounded-3xl border-slate-100 border-2 drop-shadow-md">

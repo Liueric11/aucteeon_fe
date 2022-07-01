@@ -17,6 +17,14 @@ const CardProduct = ({ data }) => {
 
   const history = useNavigate();
 
+  function textEclipseFormat(text) {
+    if (text.length < 20) {
+      return text;
+    } else {
+      return text.slice(0, 20) + '...';
+    }
+  }
+
   useEffect(() => {
     const interval = data
       ? setInterval(() => {
@@ -56,19 +64,21 @@ const CardProduct = ({ data }) => {
 
   return (
     <div
-      className="p-4  bg-white rounded-2xl carousel-item border-2 border-slate-200 w-60"
+      className="p-4  bg-white rounded-2xl carousel-item border-2 border-slate-200"
       onClick={onClickCard}
     >
       <div className="flex-col justify-center flex">
-        <div className="h-48">
+        <div className="h-48 flex justify-center">
           <img src={data.images} width={200} height={200} alt="" className="object-cover h-48" />
         </div>
-        <p className="mt-3 text-xl font-bold">{data.name}</p>
+        <p className="mt-3 text-lg font-bold overflow-hidden text-ellipsis ml-2 w-48 h-20">
+          {textEclipseFormat(data.name)}
+        </p>
         <hr className="my-2" />
         <div className="flex flex-row justify-between">
           <div className="flex-col mb-2">
-            <p className="text-xs  font-semibold text-gray-400">Open Bid From</p>
-            <p className="text-sm md:text-base font-bold">{`Rp ${data.initValue
+            <p className="text-xs font-semibold text-gray-400">Open Bid From</p>
+            <p className="text-sm md:text-base font-bold text-ellipsis overflow-hidden whitespace-nowrap w-28 h-10">{`Rp ${data.initValue
               .toLocaleString()
               .replace(/,/g, '.')}`}</p>
           </div>

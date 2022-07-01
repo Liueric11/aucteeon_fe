@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import parse from 'html-react-parser';
 
 const ProductDescription = ({ data, highestBid }) => {
   const [timeLeft, setTimeLeft] = useState(0);
@@ -91,7 +92,7 @@ const ProductDescription = ({ data, highestBid }) => {
           </span>
         </p>
         <div className="h-4" />
-        <p className="font-normal">{data.desc}</p>
+        <div>{parse(data.desc)}</div>
       </div>
       <div className="h-px bg-slate-900 my-2" />
     </div>

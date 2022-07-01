@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import logo from 'src/assets/logo.png';
-import google from 'src/assets/google-logo.png';
 import { toast } from 'react-toastify';
 import { createNewUser } from 'src/api';
 import { useNavigate } from 'react-router-dom';
